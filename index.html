@@ -47,7 +47,7 @@
     .custom-picker-box input[type="color"] { width: 46px; height: 38px; border: none; background: none; cursor: pointer; }
     label { display: block; font-size: 0.85rem; font-weight: 600; margin: 10px 0 5px; }
     input[type="text"], input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; }
-    .calc-box { background: #faf5ff; border: 1px solid #e9d5ff; padding: 12px; border-radius: 10px; margin-top: 12px; font-size: 0.9rem; line-height: 1.5; }
+    .calc-box { background: #faf5ff; border: 1px solid #e9d5ff; padding: 12px; border-radius: 10px; margin-top: 12px; font-size: 0.9rem; line-height: 1.6; }
     .wa-btn { width: 100%; background: #16a34a; color: #fff; border: none; padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 700; margin-top: 14px; cursor: pointer; }
     .other-cat-box { display: none; padding: 14px; background: #f8fafc; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem; line-height: 1.6; }
   </style>
@@ -95,7 +95,7 @@
       <div id="wallPreview" class="wall-preview">
         <div class="wall-badge">
           <strong id="selectedName">Royal Emerald Teal (#R-301)</strong>
-          <span id="selectedRate">રોયલ લક્ઝરી • ₹560 / લિટર</span>
+          <span id="selectedCat">કેટેગરી: રોયલ લક્ઝરી (Royal)</span>
         </div>
       </div>
     </div>
@@ -117,14 +117,14 @@
         <input type="color" id="customColorInput" value="#6b21a8" onchange="pickCustomColor(this.value)" />
         <div>
           <b style="font-size:0.88rem; color:#4c1d95;">તમારો મનપસંદ કલર બનાવો (Custom Color)</b>
-          <div style="font-size:0.78rem; color:#64748b;">અહીં ક્લિક કરીને કોઈપણ કલર પસંદ કરો (₹580/લિટર)</div>
+          <div style="font-size:0.78rem; color:#64748b;">અહીં ક્લિક કરીને કોઈપણ કલર શેડ પસંદ કરો</div>
         </div>
       </div>
     </div>
 
-    <!-- Calculator & WhatsApp Share -->
+    <!-- Litre Calculator & WhatsApp Share (No Prices) -->
     <div class="card">
-      <div class="section-title">લિટર અને અંદાજિત ભાવ કેલ્ક્યુલેટર:</div>
+      <div class="section-title">કલર લિટર કેલ્ક્યુલેટર અને ઓર્ડર:</div>
       <label>દીવાલનું માપ (Sq. Ft. માં નાખો - વૈકલ્પિક):</label>
       <input type="number" id="sqftInput" placeholder="જેમ કે: 500" oninput="updateSummary()" />
 
@@ -157,17 +157,17 @@
   const SHOP_WHATSAPP = "";
 
   const shades = [
-    { code: "#R-301", name: "Royal Emerald Teal", cat: "Royal", hex: "#0F766E", rate: 560 },
-    { code: "#R-302", name: "Imperial Velvet Purple", cat: "Royal", hex: "#6B21A8", rate: 580 },
-    { code: "#R-303", name: "Royal Champagne Gold", cat: "Royal", hex: "#D4AF37", rate: 590 },
-    { code: "#R-304", name: "Maharaja Maroon", cat: "Royal", hex: "#881337", rate: 570 },
-    { code: "#R-305", name: "Sapphire Midnight", cat: "Royal", hex: "#1E3A8A", rate: 575 },
-    { code: "#R-306", name: "Pearl Satin Rose", cat: "Royal", hex: "#FBCFE8", rate: 550 },
-    { code: "#I-101", name: "Ivory Cream", cat: "Interior", hex: "#F5E6CA", rate: 380 },
-    { code: "#I-102", name: "Sky Breeze", cat: "Interior", hex: "#BAE6FD", rate: 390 },
-    { code: "#E-201", name: "Terracotta Sun", cat: "Exterior", hex: "#EA580C", rate: 440 },
-    { code: "#E-202", name: "Sandstone Beige", cat: "Exterior", hex: "#D6C7B2", rate: 420 },
-    { code: "#M-401", name: "Golden Wood Brown", cat: "Enamel", hex: "#78350F", rate: 340 }
+    { code: "#R-301", name: "Royal Emerald Teal", cat: "Royal", hex: "#0F766E" },
+    { code: "#R-302", name: "Imperial Velvet Purple", cat: "Royal", hex: "#6B21A8" },
+    { code: "#R-303", name: "Royal Champagne Gold", cat: "Royal", hex: "#D4AF37" },
+    { code: "#R-304", name: "Maharaja Maroon", cat: "Royal", hex: "#881337" },
+    { code: "#R-305", name: "Sapphire Midnight", cat: "Royal", hex: "#1E3A8A" },
+    { code: "#R-306", name: "Pearl Satin Rose", cat: "Royal", hex: "#FBCFE8" },
+    { code: "#I-101", name: "Ivory Cream", cat: "Interior", hex: "#F5E6CA" },
+    { code: "#I-102", name: "Sky Breeze", cat: "Interior", hex: "#BAE6FD" },
+    { code: "#E-201", name: "Terracotta Sun", cat: "Exterior", hex: "#EA580C" },
+    { code: "#E-202", name: "Sandstone Beige", cat: "Exterior", hex: "#D6C7B2" },
+    { code: "#M-401", name: "Golden Wood Brown", cat: "Enamel", hex: "#78350F" }
   ];
 
   let currentShade = shades[0];
@@ -208,7 +208,7 @@
         <div class="color-box" style="background:${s.hex}"></div>
         <div class="shade-info">
           <b>${s.name}</b>
-          <span>${s.code} • ₹${s.rate}/L</span>
+          <span>${s.code}</span>
         </div>`;
       div.onclick = () => selectShade(s);
       grid.appendChild(div);
@@ -225,37 +225,35 @@
     currentShade = shade;
     document.getElementById("wallPreview").style.background = shade.hex;
     document.getElementById("selectedName").innerText = `${shade.name} (${shade.code})`;
-    document.getElementById("selectedRate").innerText = `${shade.cat} • ₹${shade.rate} / લિટર`;
+    document.getElementById("selectedCat").innerText = `કેટેગરી: ${shade.cat}`;
     renderShades(activeFilter);
     updateSummary();
   }
 
   function pickCustomColor(hexVal) {
-    currentShade = { code: hexVal.toUpperCase(), name: "Custom Royal Shade", cat: "Custom", hex: hexVal, rate: 580 };
+    currentShade = { code: hexVal.toUpperCase(), name: "Custom Royal Shade", cat: "Custom", hex: hexVal };
     document.getElementById("wallPreview").style.background = hexVal;
     document.getElementById("selectedName").innerText = `Custom Shade (${hexVal.toUpperCase()})`;
-    document.getElementById("selectedRate").innerText = `Custom Royal • ₹580 / લિટર`;
+    document.getElementById("selectedCat").innerText = `કેટેગરી: Custom Color`;
     updateSummary();
   }
 
   function updateSummary() {
     const sqft = parseFloat(document.getElementById("sqftInput").value) || 0;
     const litres = parseInt(document.getElementById("litreSelect").value);
-    const total = litres * currentShade.rate;
     let estText = sqft > 0 ? `<div>📐 ${sqft} Sq.Ft. (2 કોટ) માટે અંદાજિત કલર: <b>~${Math.ceil(sqft / 110)} લિટર</b></div>` : "";
     document.getElementById("summaryBox").innerHTML = `
       ${estText}
       <div>🎨 પસંદ કરેલ કલર: <b>${currentShade.name} (${currentShade.code})</b></div>
-      <div>🪣 પેક સાઇઝ: <b>${litres} લિટર</b> × ₹${currentShade.rate}</div>
-      <div style="margin-top:6px; font-size:1.05rem; color:#581c87;">💰 કુલ અંદાજિત રકમ: <b>₹${total.toLocaleString('en-IN')}</b></div>
+      <div>🏷️ કેટેગરી: <b>${currentShade.cat}</b></div>
+      <div>🪣 પસંદ કરેલ પેક સાઇઝ: <b>${litres} લિટર</b></div>
     `;
   }
 
   function orderWhatsApp() {
     const litres = document.getElementById("litreSelect").value;
     const addr = document.getElementById("custAddress").value || "વડોદરા";
-    const total = litres * currentShade.rate;
-    const msg = `નમસ્તે! પટેલ રોયલ કલર એન્ડ પેઇન્ટ્સમાંથી કલરની વિગત:%0A%0A🎨 *કલર:* ${currentShade.name} (${currentShade.code})%0A🏷️ *કેટેગરી:* ${currentShade.cat}%0A🪣 *માપ:* ${litres} લિટર%0A💰 *અંદાજિત બિલ:* ₹${total}%0A📍 *સરનામું:* ${addr}`;
+    const msg = `નમસ્તે! પટેલ રોયલ કલર એન્ડ પેઇન્ટ્સમાંથી કલરની વિગત:%0A%0A🎨 *કલર:* ${currentShade.name} (${currentShade.code})%0A🏷️ *કેટેગરી:* ${currentShade.cat}%0A🪣 *માપ:* ${litres} લિટર%0A📍 *સરનામું:* ${addr}`;
     const url = SHOP_WHATSAPP ? `https://wa.me/${SHOP_WHATSAPP}?text=${msg}` : `https://api.whatsapp.com/send?text=${msg}`;
     window.open(url, "_blank");
   }
@@ -265,4 +263,3 @@
 </script>
 </body>
 </html>
-
