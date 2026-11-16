@@ -1,1 +1,268 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="પટેલ રોયલ કલર એન્ડ પેઇન્ટ્સ, વડોદરા - ડિજિટલ કલર શેડ કાર્ડ, કલર પસંદગી અને પેઇન્ટ કેલ્ક્યુલેટર એપ." />
+  <meta name="keywords" content="Patel Royal Color and Paints Vadodara, Gujarati Paint App, Color Shade Card, Paint Shop Vadodara" />
+  <meta name="theme-color" content="#6b21a8" />
+  <title>પટેલ રોયલ કલર એન્ડ પેઇન્ટ્સ - વડોદરા</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Gujarati', 'Segoe UI', sans-serif; }
+    body { background: #f4f6f9; color: #1e293b; padding-bottom: 40px; }
+    header { background: linear-gradient(135deg, #3b0764, #6b21a8); color: #fff; padding: 18px 16px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    header h1 { font-size: 1.35rem; margin-bottom: 4px; }
+    header p { font-size: 0.85rem; opacity: 0.92; }
+    .container { max-width: 720px; margin: 16px auto; padding: 0 14px; }
+    .card { background: #fff; border-radius: 14px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+    .section-title { font-size: 1.02rem; font-weight: 700; color: #3b0764; margin-bottom: 10px; }
+    
+    /* Categories Grid - First Box Color */
+    .cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .cat-box { border: 2px solid #e2e8f0; border-radius: 12px; padding: 12px; text-align: center; cursor: pointer; background: #f8fafc; transition: all 0.2s; }
+    .cat-box.active { border-color: #6b21a8; background: #faf5ff; box-shadow: 0 3px 8px rgba(107,33,168,0.15); }
+    .cat-icon { font-size: 1.6rem; margin-bottom: 4px; }
+    .cat-name { font-size: 0.92rem; font-weight: 700; color: #0f172a; }
+    .cat-sub { font-size: 0.75rem; color: #64748b; margin-top: 2px; }
+
+    /* Wall Visualizer */
+    .wall-preview { height: 150px; border-radius: 12px; background: #0F766E; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px; transition: background 0.3s ease; border: 2px solid #e2e8f0; }
+    .wall-badge { background: rgba(255,255,255,0.95); padding: 8px 12px; border-radius: 8px; display: inline-block; max-width: fit-content; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+    .wall-badge strong { display: block; font-size: 0.95rem; color: #0f172a; }
+    .wall-badge span { font-size: 0.8rem; color: #475569; }
+
+    /* Tabs & Shades */
+    .tabs { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 12px; padding-bottom: 4px; }
+    .tab-btn { border: 1px solid #cbd5e1; background: #f8fafc; padding: 7px 13px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .tab-btn.active { background: #6b21a8; color: #fff; border-color: #6b21a8; }
+    .shade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .shade-item { border: 2px solid #e2e8f0; border-radius: 10px; overflow: hidden; cursor: pointer; text-align: center; background: #fff; transition: transform 0.15s; }
+    .shade-item.selected { border-color: #6b21a8; transform: scale(1.03); }
+    .color-box { height: 60px; width: 100%; }
+    .shade-info { padding: 6px; font-size: 0.76rem; }
+    .shade-info b { display: block; color: #0f172a; }
+    .shade-info span { color: #64748b; }
+
+    .custom-picker-box { display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 10px; background: #faf5ff; border: 1px dashed #c084fc; border-radius: 10px; }
+    .custom-picker-box input[type="color"] { width: 46px; height: 38px; border: none; background: none; cursor: pointer; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin: 10px 0 5px; }
+    input[type="text"], input[type="number"], select { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; }
+    .calc-box { background: #faf5ff; border: 1px solid #e9d5ff; padding: 12px; border-radius: 10px; margin-top: 12px; font-size: 0.9rem; line-height: 1.5; }
+    .wa-btn { width: 100%; background: #16a34a; color: #fff; border: none; padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 700; margin-top: 14px; cursor: pointer; }
+    .other-cat-box { display: none; padding: 14px; background: #f8fafc; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 0.9rem; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>👑 પટેલ રોયલ કલર એન્ડ પેઇન્ટ્સ</h1>
+  <p>વડોદરા • ડિજિટલ કલર શેડ કાર્ડ અને પેઇન્ટ કેલ્ક્યુલેટર</p>
+</header>
+
+<div class="container">
+  <!-- 1. Categories Section (First Box = Color) -->
+  <div class="card">
+    <div class="section-title">અમારી દુકાનમાં મળતી કેટેગરી પસંદ કરો:</div>
+    <div class="cat-grid">
+      <div class="cat-box active" id="cat-color" onclick="switchCategory('color')">
+        <div class="cat-icon">🎨</div>
+        <div class="cat-name">૧. કલર (Color)</div>
+        <div class="cat-sub">રોયલ, ઇન્ટિરિયર અને એક્સટિરિયર</div>
+      </div>
+      <div class="cat-box" id="cat-putty" onclick="switchCategory('putty')">
+        <div class="cat-icon">🧱</div>
+        <div class="cat-name">૨. પુટ્ટી અને પ્રાઇમર</div>
+        <div class="cat-sub">વોલ પુટ્ટી, પ્રાઇમર અને સિમેન્ટ</div>
+      </div>
+      <div class="cat-box" id="cat-tools" onclick="switchCategory('tools')">
+        <div class="cat-icon">🖌️</div>
+        <div class="cat-name">૩. બ્રશ અને રોલર</div>
+        <div class="cat-sub">પેઇન્ટ બ્રશ, રોલર અને ટૂલ્સ</div>
+      </div>
+      <div class="cat-box" id="cat-water" onclick="switchCategory('water')">
+        <div class="cat-icon">💧</div>
+        <div class="cat-name">૪. વોટરપ્રૂફિંગ</div>
+        <div class="cat-sub">ધાબા અને દીવાલ માટે કેમિકલ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Color Section (Default Open) -->
+  <div id="colorSection">
+    <!-- Live Wall Visualizer -->
+    <div class="card">
+      <div class="section-title">દીવાલ પર કલર કેવો લાગશે તે જુઓ:</div>
+      <div id="wallPreview" class="wall-preview">
+        <div class="wall-badge">
+          <strong id="selectedName">Royal Emerald Teal (#R-301)</strong>
+          <span id="selectedRate">રોયલ લક્ઝરી • ₹560 / લિટર</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shade Catalog -->
+    <div class="card">
+      <div class="section-title">કલર શેડ પસંદ કરો:</div>
+      <div class="tabs">
+        <button class="tab-btn active" onclick="filterShades('Royal', this)">👑 રોયલ (Royal)</button>
+        <button class="tab-btn" onclick="filterShades('all', this)">બધા કલર</button>
+        <button class="tab-btn" onclick="filterShades('Interior', this)">ઇન્ટિરિયર</button>
+        <button class="tab-btn" onclick="filterShades('Exterior', this)">એક્સટિરિયર</button>
+        <button class="tab-btn" onclick="filterShades('Enamel', this)">લાકડા અને લોખંડ</button>
+      </div>
+      <div id="shadeGrid" class="shade-grid"></div>
+
+      <!-- Custom Color Chooser -->
+      <div class="custom-picker-box">
+        <input type="color" id="customColorInput" value="#6b21a8" onchange="pickCustomColor(this.value)" />
+        <div>
+          <b style="font-size:0.88rem; color:#4c1d95;">તમારો મનપસંદ કલર બનાવો (Custom Color)</b>
+          <div style="font-size:0.78rem; color:#64748b;">અહીં ક્લિક કરીને કોઈપણ કલર પસંદ કરો (₹580/લિટર)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calculator & WhatsApp Share -->
+    <div class="card">
+      <div class="section-title">લિટર અને અંદાજિત ભાવ કેલ્ક્યુલેટર:</div>
+      <label>દીવાલનું માપ (Sq. Ft. માં નાખો - વૈકલ્પિક):</label>
+      <input type="number" id="sqftInput" placeholder="જેમ કે: 500" oninput="updateSummary()" />
+
+      <label>પેક સાઇઝ પસંદ કરો (Litres):</label>
+      <select id="litreSelect" onchange="updateSummary()">
+        <option value="1">1 લિટર</option>
+        <option value="4" selected>4 લિટર (બાલદી)</option>
+        <option value="10">10 લિટર (બાલદી)</option>
+        <option value="20">20 લિટર (ડ્રમ)</option>
+      </select>
+
+      <label>તમારું નામ અને સરનામું (વડોદરા):</label>
+      <input type="text" id="custAddress" placeholder="નામ, વિસ્તાર / સોસાયટીનું નામ" />
+
+      <div class="calc-box" id="summaryBox"></div>
+
+      <button class="wa-btn" onclick="orderWhatsApp()">📲 WhatsApp પર વિગત મોકલો</button>
+    </div>
+  </div>
+
+  <!-- Other Categories Info Box -->
+  <div class="card other-cat-box" id="otherCatSection">
+    <h3 id="otherCatTitle" style="color:#3b0764; margin-bottom:6px;"></h3>
+    <p id="otherCatDesc"></p>
+    <button class="wa-btn" style="margin-top:12px;" onclick="switchCategory('color')">🎨 પાછા કલર શેડ કાર્ડ પર જાઓ</button>
+  </div>
+</div>
+
+<script>
+  const SHOP_WHATSAPP = "";
+
+  const shades = [
+    { code: "#R-301", name: "Royal Emerald Teal", cat: "Royal", hex: "#0F766E", rate: 560 },
+    { code: "#R-302", name: "Imperial Velvet Purple", cat: "Royal", hex: "#6B21A8", rate: 580 },
+    { code: "#R-303", name: "Royal Champagne Gold", cat: "Royal", hex: "#D4AF37", rate: 590 },
+    { code: "#R-304", name: "Maharaja Maroon", cat: "Royal", hex: "#881337", rate: 570 },
+    { code: "#R-305", name: "Sapphire Midnight", cat: "Royal", hex: "#1E3A8A", rate: 575 },
+    { code: "#R-306", name: "Pearl Satin Rose", cat: "Royal", hex: "#FBCFE8", rate: 550 },
+    { code: "#I-101", name: "Ivory Cream", cat: "Interior", hex: "#F5E6CA", rate: 380 },
+    { code: "#I-102", name: "Sky Breeze", cat: "Interior", hex: "#BAE6FD", rate: 390 },
+    { code: "#E-201", name: "Terracotta Sun", cat: "Exterior", hex: "#EA580C", rate: 440 },
+    { code: "#E-202", name: "Sandstone Beige", cat: "Exterior", hex: "#D6C7B2", rate: 420 },
+    { code: "#M-401", name: "Golden Wood Brown", cat: "Enamel", hex: "#78350F", rate: 340 }
+  ];
+
+  let currentShade = shades[0];
+  let activeFilter = "Royal";
+
+  function switchCategory(cat) {
+    document.querySelectorAll(".cat-box").forEach(el => el.classList.remove("active"));
+    document.getElementById("cat-" + cat).classList.add("active");
+
+    const colorSec = document.getElementById("colorSection");
+    const otherSec = document.getElementById("otherCatSection");
+
+    if (cat === "color") {
+      colorSec.style.display = "block";
+      otherSec.style.display = "none";
+    } else {
+      colorSec.style.display = "none";
+      otherSec.style.display = "block";
+      const info = {
+        putty: ["🧱 પુટ્ટી અને પ્રાઇમર (Putty & Primer)", "અમારી દુકાનમાં બિરલા વ્હાઇટ, જે.કે. વોલ પુટ્ટી, ઇન્ટિરિયર અને એક્સટિરિયર પ્રાઇમર બધી સાઇઝમાં ઉપલબ્ધ છે."],
+        tools: ["🖌️ બ્રશ અને રોલર (Brush & Roller)", "તમામ સાઇઝના પેઇન્ટ બ્રશ, સ્પંજ રોલર, ટેક્સચર રોલર, સેન્ડપેપર અને માસ્કિંગ ટેપ ઉપલબ્ધ છે."],
+        water: ["💧 વોટરપ્રૂફિંગ સોલ્યુશન (Waterproofing)", "ધાબા, બાથરૂમ અને બહારની દીવાલોના ભેજ અને લીકેજ રોકવા માટે ડૉ. ફિક્સિટ અને અન્ય કંપનીના કેમિકલ ઉપલબ્ધ છે."]
+      };
+      document.getElementById("otherCatTitle").innerText = info[cat][0];
+      document.getElementById("otherCatDesc").innerText = info[cat][1];
+    }
+  }
+
+  function renderShades(category) {
+    activeFilter = category;
+    const grid = document.getElementById("shadeGrid");
+    grid.innerHTML = "";
+    const filtered = category === "all" ? shades : shades.filter(s => s.cat === category);
+    filtered.forEach(s => {
+      const div = document.createElement("div");
+      div.className = "shade-item" + (s.code === currentShade.code ? " selected" : "");
+      div.innerHTML = `
+        <div class="color-box" style="background:${s.hex}"></div>
+        <div class="shade-info">
+          <b>${s.name}</b>
+          <span>${s.code} • ₹${s.rate}/L</span>
+        </div>`;
+      div.onclick = () => selectShade(s);
+      grid.appendChild(div);
+    });
+  }
+
+  function filterShades(cat, btn) {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderShades(cat);
+  }
+
+  function selectShade(shade) {
+    currentShade = shade;
+    document.getElementById("wallPreview").style.background = shade.hex;
+    document.getElementById("selectedName").innerText = `${shade.name} (${shade.code})`;
+    document.getElementById("selectedRate").innerText = `${shade.cat} • ₹${shade.rate} / લિટર`;
+    renderShades(activeFilter);
+    updateSummary();
+  }
+
+  function pickCustomColor(hexVal) {
+    currentShade = { code: hexVal.toUpperCase(), name: "Custom Royal Shade", cat: "Custom", hex: hexVal, rate: 580 };
+    document.getElementById("wallPreview").style.background = hexVal;
+    document.getElementById("selectedName").innerText = `Custom Shade (${hexVal.toUpperCase()})`;
+    document.getElementById("selectedRate").innerText = `Custom Royal • ₹580 / લિટર`;
+    updateSummary();
+  }
+
+  function updateSummary() {
+    const sqft = parseFloat(document.getElementById("sqftInput").value) || 0;
+    const litres = parseInt(document.getElementById("litreSelect").value);
+    const total = litres * currentShade.rate;
+    let estText = sqft > 0 ? `<div>📐 ${sqft} Sq.Ft. (2 કોટ) માટે અંદાજિત કલર: <b>~${Math.ceil(sqft / 110)} લિટર</b></div>` : "";
+    document.getElementById("summaryBox").innerHTML = `
+      ${estText}
+      <div>🎨 પસંદ કરેલ કલર: <b>${currentShade.name} (${currentShade.code})</b></div>
+      <div>🪣 પેક સાઇઝ: <b>${litres} લિટર</b> × ₹${currentShade.rate}</div>
+      <div style="margin-top:6px; font-size:1.05rem; color:#581c87;">💰 કુલ અંદાજિત રકમ: <b>₹${total.toLocaleString('en-IN')}</b></div>
+    `;
+  }
+
+  function orderWhatsApp() {
+    const litres = document.getElementById("litreSelect").value;
+    const addr = document.getElementById("custAddress").value || "વડોદરા";
+    const total = litres * currentShade.rate;
+    const msg = `નમસ્તે! પટેલ રોયલ કલર એન્ડ પેઇન્ટ્સમાંથી કલરની વિગત:%0A%0A🎨 *કલર:* ${currentShade.name} (${currentShade.code})%0A🏷️ *કેટેગરી:* ${currentShade.cat}%0A🪣 *માપ:* ${litres} લિટર%0A💰 *અંદાજિત બિલ:* ₹${total}%0A📍 *સરનામું:* ${addr}`;
+    const url = SHOP_WHATSAPP ? `https://wa.me/${SHOP_WHATSAPP}?text=${msg}` : `https://api.whatsapp.com/send?text=${msg}`;
+    window.open(url, "_blank");
+  }
+
+  renderShades("Royal");
+  updateSummary();
+</script>
+</body>
+</html>
 
