@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patel Royal Color and Paints - Jambusar</title>
-  <meta name="description" content="Patel Royal Color and Paints, Jambusar - Official Shade Catalog for Metal, Wood and Wall Paints." />
+  <meta name="description" content="Patel Royal Color and Paints, Jambusar - Digital Shade Catalog for Metal, Wood and Wall Paints." />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
     body { background: #f1f5f9; color: #0f172a; padding-bottom: 45px; }
@@ -19,7 +19,7 @@
     header h1 { font-size: 1.4rem; font-weight: 800; letter-spacing: 0.3px; }
     header p { font-size: 0.88rem; opacity: 0.92; margin-top: 4px; }
 
-    .container { max-width: 760px; margin: 20px auto; padding: 0 14px; }
+    .container { max-width: 780px; margin: 20px auto; padding: 0 14px; }
 
     .top-bar {
       display: flex;
@@ -116,11 +116,11 @@
     }
     .search-box:focus { border-color: #2563eb; }
 
-    /* Step 3: Shade Name & Code Boxes (No Color Swatch, No Price) */
+    /* Step 3: Shade Swatch + Name Grid */
     .color-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      gap: 12px;
     }
     @media (min-width: 540px) {
       .color-grid { grid-template-columns: repeat(3, 1fr); }
@@ -128,20 +128,97 @@
     .color-card {
       background: #fff;
       border-radius: 12px;
-      padding: 15px 10px;
+      overflow: hidden;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 7px rgba(0,0,0,0.07);
       cursor: pointer;
       border: 1.5px solid #e2e8f0;
-      transition: transform 0.12s, border-color 0.12s, background 0.12s;
+      transition: transform 0.12s, border-color 0.12s;
     }
     .color-card:hover, .color-card:active {
       border-color: #2563eb;
-      background: #eff6ff;
       transform: scale(0.98);
     }
-    .color-name { font-size: 0.95rem; font-weight: 700; color: #1e3a8a; }
-    .color-code { font-size: 0.82rem; font-weight: 600; color: #475569; margin-top: 4px; }
+    .swatch {
+      height: 85px;
+      width: 100%;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .card-body {
+      padding: 11px 8px;
+    }
+    .color-name { font-size: 0.94rem; font-weight: 700; color: #0f172a; }
+    .color-code { font-size: 0.8rem; font-weight: 600; color: #475569; margin-top: 3px; }
+
+    /* Full Color Preview Popup */
+    .preview-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 1000;
+    }
+    .preview-overlay.show { display: flex; }
+    .preview-box {
+      background: #fff;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 18px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      animation: pop 0.18s ease-out;
+    }
+    @keyframes pop { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .big-swatch {
+      height: 220px;
+      width: 100%;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .preview-details {
+      padding: 20px 16px;
+    }
+    .preview-sec {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .preview-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 6px;
+    }
+    .preview-code {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 4px;
+    }
+    .close-preview-btn {
+      margin-top: 18px;
+      background: #1e3a8a;
+      color: #fff;
+      border: none;
+      padding: 11px 28px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .close-preview-btn:active { background: #1d4ed8; }
+
+    .note-text {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-top: 16px;
+    }
 
     .empty-msg {
       text-align: center;
@@ -194,200 +271,211 @@
       </div>
     </div>
 
-    <!-- STEP 3: SHADE NAMES & CODES -->
+    <!-- STEP 3: SHADE SWATCH + NAME -->
     <div id="step3" class="hidden">
       <div class="top-bar">
         <button class="back-btn" onclick="goToStep2()">← પાછા જાઓ</button>
         <span class="count-badge" id="shadeCount">0 Shades</span>
       </div>
-      <div class="step-title" id="sectionHeading">કલરનું નામ પસંદ કરો 👇</div>
-      <input type="text" id="searchInput" class="search-box" placeholder="🔍 કલરનું નામ અથવા નંબર લખો (દા.ત. Phirozi, 0765)..." oninput="filterShades()" />
+      <div class="step-title" id="sectionHeading">કલર મોટો જોવા માટે કલર પર ક્લિક કરો 👇</div>
+      <input type="text" id="searchInput" class="search-box" placeholder="🔍 કલરનું નામ અથવા નંબર શોધો..." oninput="filterShades()" />
       <div class="color-grid" id="colorGrid"></div>
+      <div class="note-text">* મોબાઈલ સ્ક્રીન મુજબ કલરના શેડમાં થોડો તફાવત હોઈ શકે છે.</div>
     </div>
 
   </div>
 
-  <script>
-    // અહીં તમારો WhatsApp નંબર 91 સાથે લખો
-    const WHATSAPP_NUMBER = "919876543210";
+  <!-- LARGE COLOR PREVIEW POPUP (NO WHATSAPP) -->
+  <div class="preview-overlay" id="previewOverlay" onclick="closePreview(event)">
+    <div class="preview-box" onclick="event.stopPropagation()">
+      <div class="big-swatch" id="bigSwatch"></div>
+      <div class="preview-details">
+        <div class="preview-sec" id="previewSec">વિભાગ</div>
+        <div class="preview-name" id="previewName">Color Name</div>
+        <div class="preview-code" id="previewCode">Shade Code</div>
+        <button class="close-preview-btn" onclick="hidePreview()">બંધ કરો (Close)</button>
+      </div>
+    </div>
+  </div>
 
+  <script>
     // 1. લોખંડ / લાકડું (Apcolite Enamel Catalog Shades)
     const metalWoodShades = [
-      { name: "Pista", code: "0292" },
-      { name: "Cascade Green", code: "2370" },
-      { name: "Aquamarine (G)", code: "0202" },
-      { name: "Water Green", code: "0246" },
-      { name: "Mint Green", code: "0253" },
-      { name: "Bus Green", code: "0209" },
-      { name: "Dark Green", code: "0212" },
-      { name: "Satin Blue", code: "0124" },
-      { name: "Wild Lilac", code: "0712" },
-      { name: "Sky Blue", code: "0125" },
-      { name: "Wild Purple", code: "0718" },
-      { name: "Phirozi", code: "0121" },
-      { name: "French Blue", code: "0112" },
-      { name: "Oxford Blue", code: "0119" },
-      { name: "Candy", code: "0478" },
-      { name: "Petal", code: "0P05" },
-      { name: "Pale Rose (G)", code: "0421" },
-      { name: "Dawn Glow", code: "0562" },
-      { name: "Deep Orange", code: "0506" },
-      { name: "Signal Red", code: "0520" },
-      { name: "PO Red", code: "0518" },
-      { name: "Light Cream", code: "0Y02" },
-      { name: "Off White", code: "0905" },
-      { name: "Royal Ivory", code: "0331" },
-      { name: "Pale Cream", code: "0328" },
-      { name: "Golden Yellow", code: "0313" },
-      { name: "Lemon Yellow", code: "0317" },
-      { name: "Mid Buff (G)", code: "0324" },
-      { name: "Jasmine Wisp-N", code: "0943" },
-      { name: "Blue Bell White", code: "0J32" },
-      { name: "Mushroom", code: "0422" },
-      { name: "Nickel Grey", code: "6126" },
-      { name: "Light Grey", code: "6116" },
-      { name: "Smoke Grey (G)", code: "6134" },
-      { name: "Ad. Grey", code: "0601" },
-      { name: "Coral Shell", code: "0951" },
-      { name: "Sandal Wood", code: "0485" },
-      { name: "Raw Silk", code: "0351" },
-      { name: "Suede", code: "0N01" },
-      { name: "Dawn", code: "0469" },
-      { name: "Brandy (G)", code: "0N45" },
-      { name: "Sandstone (G)", code: "0333" },
-      { name: "Gold (Metallic)", code: "Metallic" },
-      { name: "Silver (Metallic)", code: "Metallic" },
-      { name: "Leaf Brown", code: "0415" },
-      { name: "Golden Brown", code: "0413" },
-      { name: "Bay Brown", code: "4255" },
-      { name: "Teak Brown", code: "4244" },
-      { name: "Imperial Crimson", code: "0510" },
-      { name: "Deep Mahogany", code: "4284" },
-      { name: "Mercedes Red", code: "0514" },
-      { name: "Brown", code: "0403" },
-      { name: "Special Truck Brown", code: "4293" },
-      { name: "Special Teak (Satin)", code: "4285" },
-      { name: "Timber Golden Brown (Satin)", code: "4290" },
-      { name: "Timber Brown (Satin)", code: "4264" },
-      { name: "Rich Rosewood (Satin)", code: "4291" },
-      { name: "Mahogany (Satin)", code: "0R05" },
-      { name: "Teakwood (Satin)", code: "4292" },
-      { name: "Satin Brown", code: "4254" },
-      { name: "Walnut Brown (Satin)", code: "4265" },
-      { name: "Nutbrown-N (Satin)", code: "0419" },
-      { name: "Morning Glory (Satin)", code: "0765" },
-      { name: "Sugared Nut (Satin)", code: "L126" },
-      { name: "Pebble White (Satin)", code: "L136" },
-      { name: "Antique White (Satin)", code: "0940" },
-      { name: "Silver Grey (Satin)", code: "0615" },
-      { name: "Metallic Grey (Satin)", code: "8296" },
-      { name: "Dusk Cloud (Satin)", code: "8287" },
-      { name: "Natural Linen (Satin)", code: "L132" },
-      { name: "Cream (Satin)", code: "0307" },
-      { name: "Summer Sprinkle (Satin)", code: "7923" },
-      { name: "Lemon Burst (Satin)", code: "7864" },
-      { name: "Tons Of Sun (Satin)", code: "7895" },
-      { name: "Lemon Ole (Satin)", code: "X105" },
-      { name: "Empire Yellow (Satin)", code: "7918" },
-      { name: "Twilight Hush (Satin)", code: "0944" },
-      { name: "Rose Bud (Satin)", code: "8035" },
-      { name: "Palace Lights-N (Satin)", code: "0N17" },
-      { name: "Pink Dollop (Satin)", code: "8098" },
-      { name: "Pink Linen (Satin)", code: "8056" },
-      { name: "Petal Pink (Satin)", code: "8119" },
-      { name: "Wild Berry (Satin)", code: "8110" },
-      { name: "Aquamint (Satin)", code: "L114" },
-      { name: "Oceans Whisper (Satin)", code: "7436" },
-      { name: "Classic (Satin)", code: "1263" },
-      { name: "New Day (Satin)", code: "7410" },
-      { name: "Blue Curacao (Satin)", code: "7360" },
-      { name: "Blue Glory (Satin)", code: "7247" },
-      { name: "Lost Blue (Satin)", code: "9182" },
-      { name: "Lemon Grass (Satin)", code: "7747" },
-      { name: "Misty Spring (Satin)", code: "7658" },
-      { name: "Exotic Sea (Satin)", code: "9298" },
-      { name: "Harvest Season (Satin)", code: "7757" },
-      { name: "Lemonade (Satin)", code: "7830" },
-      { name: "Sporting Green (Satin)", code: "7741" },
-      { name: "Jungle Trail (Satin)", code: "7545" },
-      { name: "Black", code: "0601" },
-      { name: "Brilliant White", code: "0912" }
+      { name: "Pista", code: "0292", hex: "#94c595" },
+      { name: "Cascade Green", code: "2370", hex: "#6dc067" },
+      { name: "Aquamarine (G)", code: "0202", hex: "#43b59c" },
+      { name: "Water Green", code: "0246", hex: "#54a84e" },
+      { name: "Mint Green", code: "0253", hex: "#00a651" },
+      { name: "Bus Green", code: "0209", hex: "#005a32" },
+      { name: "Dark Green", code: "0212", hex: "#0b2e1b" },
+      { name: "Satin Blue", code: "0124", hex: "#62b5ce" },
+      { name: "Wild Lilac", code: "0712", hex: "#9a95c4" },
+      { name: "Sky Blue", code: "0125", hex: "#00a2d8" },
+      { name: "Wild Purple", code: "0718", hex: "#6e4e9e" },
+      { name: "Phirozi", code: "0121", hex: "#007cc3" },
+      { name: "French Blue", code: "0112", hex: "#1d3f7a" },
+      { name: "Oxford Blue", code: "0119", hex: "#0c1b4d" },
+      { name: "Candy", code: "0478", hex: "#dfd0c8" },
+      { name: "Petal", code: "0P05", hex: "#d8cfd2" },
+      { name: "Pale Rose (G)", code: "0421", hex: "#dda8a0" },
+      { name: "Dawn Glow", code: "0562", hex: "#cf4a08" },
+      { name: "Deep Orange", code: "0506", hex: "#e62e00" },
+      { name: "Signal Red", code: "0520", hex: "#cc0000" },
+      { name: "PO Red", code: "0518", hex: "#a80008" },
+      { name: "Light Cream", code: "0Y02", hex: "#dcd9b4" },
+      { name: "Off White", code: "0905", hex: "#d6d1aa" },
+      { name: "Royal Ivory", code: "0331", hex: "#d8cb94" },
+      { name: "Pale Cream", code: "0328", hex: "#d4bd6a" },
+      { name: "Golden Yellow", code: "0313", hex: "#f2a900" },
+      { name: "Lemon Yellow", code: "0317", hex: "#f5c400" },
+      { name: "Mid Buff (G)", code: "0324", hex: "#b88228" },
+      { name: "Jasmine Wisp-N", code: "0943", hex: "#d4d9c5" },
+      { name: "Blue Bell White", code: "0J32", hex: "#cfd3cc" },
+      { name: "Mushroom", code: "0422", hex: "#bfb8a5" },
+      { name: "Nickel Grey", code: "6126", hex: "#a8adaa" },
+      { name: "Light Grey", code: "6116", hex: "#7f8c8d" },
+      { name: "Smoke Grey (G)", code: "6134", hex: "#5c768d" },
+      { name: "Ad. Grey", code: "0601", hex: "#4a5359" },
+      { name: "Coral Shell", code: "0951", hex: "#e5dec9" },
+      { name: "Sandal Wood", code: "0485", hex: "#dfd3b8" },
+      { name: "Raw Silk", code: "0351", hex: "#dbd7c8" },
+      { name: "Suede", code: "0N01", hex: "#c8c4c0" },
+      { name: "Dawn", code: "0469", hex: "#cbb7a8" },
+      { name: "Brandy (G)", code: "0N45", hex: "#9c8784" },
+      { name: "Sandstone (G)", code: "0333", hex: "#998270" },
+      { name: "Gold (Metallic)", code: "Metallic", hex: "#cfa038" },
+      { name: "Silver (Metallic)", code: "Metallic", hex: "#c4c9be" },
+      { name: "Leaf Brown", code: "0415", hex: "#734229" },
+      { name: "Golden Brown", code: "0413", hex: "#7a4419" },
+      { name: "Bay Brown", code: "4255", hex: "#542e22" },
+      { name: "Teak Brown", code: "4244", hex: "#4f3629" },
+      { name: "Imperial Crimson", code: "0510", hex: "#8a151b" },
+      { name: "Deep Mahogany", code: "4284", hex: "#4d231d" },
+      { name: "Mercedes Red", code: "0514", hex: "#522121" },
+      { name: "Brown", code: "0403", hex: "#3d261c" },
+      { name: "Special Truck Brown", code: "4293", hex: "#382620" },
+      { name: "Special Teak (Satin)", code: "4285", hex: "#9e6330" },
+      { name: "Timber Golden Brown (Satin)", code: "4290", hex: "#8a5226" },
+      { name: "Timber Brown (Satin)", code: "4264", hex: "#7d4a2d" },
+      { name: "Rich Rosewood (Satin)", code: "4291", hex: "#7a3b32" },
+      { name: "Mahogany (Satin)", code: "0R05", hex: "#572924" },
+      { name: "Teakwood (Satin)", code: "4292", hex: "#54382b" },
+      { name: "Satin Brown", code: "4254", hex: "#472721" },
+      { name: "Walnut Brown (Satin)", code: "4265", hex: "#42312e" },
+      { name: "Nutbrown-N (Satin)", code: "0419", hex: "#5e3c2c" },
+      { name: "Morning Glory (Satin)", code: "0765", hex: "#ece7d5" },
+      { name: "Sugared Nut (Satin)", code: "L126", hex: "#e5dec9" },
+      { name: "Pebble White (Satin)", code: "L136", hex: "#dcd4c4" },
+      { name: "Antique White (Satin)", code: "0940", hex: "#cfc2b2" },
+      { name: "Silver Grey (Satin)", code: "0615", hex: "#9ba1a4" },
+      { name: "Metallic Grey (Satin)", code: "8296", hex: "#7b8084" },
+      { name: "Dusk Cloud (Satin)", code: "8287", hex: "#494d52" },
+      { name: "Natural Linen (Satin)", code: "L132", hex: "#e8e4d3" },
+      { name: "Cream (Satin)", code: "0307", hex: "#e6dec3" },
+      { name: "Summer Sprinkle (Satin)", code: "7923", hex: "#e8dc9e" },
+      { name: "Lemon Burst (Satin)", code: "7864", hex: "#edd96b" },
+      { name: "Tons Of Sun (Satin)", code: "7895", hex: "#e5be53" },
+      { name: "Lemon Ole (Satin)", code: "X105", hex: "#e8c417" },
+      { name: "Empire Yellow (Satin)", code: "7918", hex: "#dfa800" },
+      { name: "Twilight Hush (Satin)", code: "0944", hex: "#dfd2c8" },
+      { name: "Rose Bud (Satin)", code: "8035", hex: "#decbc3" },
+      { name: "Palace Lights-N (Satin)", code: "0N17", hex: "#d6beb5" },
+      { name: "Pink Dollop (Satin)", code: "8098", hex: "#e3b8be" },
+      { name: "Pink Linen (Satin)", code: "8056", hex: "#d4989e" },
+      { name: "Petal Pink (Satin)", code: "8119", hex: "#bd6d7c" },
+      { name: "Wild Berry (Satin)", code: "8110", hex: "#9c4352" },
+      { name: "Aquamint (Satin)", code: "L114", hex: "#c8d9d4" },
+      { name: "Oceans Whisper (Satin)", code: "7436", hex: "#b4cecc" },
+      { name: "Classic (Satin)", code: "1263", hex: "#a2bcc7" },
+      { name: "New Day (Satin)", code: "7410", hex: "#7fb4cc" },
+      { name: "Blue Curacao (Satin)", code: "7360", hex: "#5ca4c9" },
+      { name: "Blue Glory (Satin)", code: "7247", hex: "#5a74b0" },
+      { name: "Lost Blue (Satin)", code: "9182", hex: "#3c5473" },
+      { name: "Lemon Grass (Satin)", code: "7747", hex: "#d6e2bd" },
+      { name: "Misty Spring (Satin)", code: "7658", hex: "#b8d4b4" },
+      { name: "Exotic Sea (Satin)", code: "9298", hex: "#a5cfc4" },
+      { name: "Harvest Season (Satin)", code: "7757", hex: "#a8c76b" },
+      { name: "Lemonade (Satin)", code: "7830", hex: "#d6d43b" },
+      { name: "Sporting Green (Satin)", code: "7741", hex: "#7ab81d" },
+      { name: "Jungle Trail (Satin)", code: "7545", hex: "#1b8a5a" },
+      { name: "Black", code: "0601", hex: "#18181b" },
+      { name: "Brilliant White", code: "0912", hex: "#ffffff" }
     ];
 
     // 2. દીવાલ માટે (Wall Paint Catalog Shades)
     const wallShades = [
-      { name: "Radiant White", code: "0997" },
-      { name: "Sugared Nut", code: "L126" },
-      { name: "White Silk", code: "L171" },
-      { name: "Sonnet", code: "L146" },
-      { name: "Pure Ivory", code: "L124" },
-      { name: "Ice Crystal", code: "8444" },
-      { name: "Morning Glory", code: "0765" },
-      { name: "Pebble White", code: "L136" },
-      { name: "Confetti", code: "8300" },
-      { name: "Whitener", code: "8476" },
-      { name: "Down Dew-N", code: "L190" },
-      { name: "Whispering Smoke", code: "8308" },
-      { name: "Beera Pearl-N", code: "0974" },
-      { name: "Milk Chocolate", code: "8537" },
-      { name: "Silver Grey", code: "0615" },
-      { name: "Sands of Time", code: "4202" },
-      { name: "Ethnic Brown", code: "8589" },
-      { name: "Smoke-N", code: "0616" },
-      { name: "Candle Wick", code: "7907" },
-      { name: "Apricot Illusion", code: "7979" },
-      { name: "Soft Breeze", code: "8116" },
-      { name: "Eager Yellow", code: "7906" },
-      { name: "Orange Frost", code: "7978" },
-      { name: "Pale Blush", code: "8132" },
-      { name: "Summer Harvest", code: "7921" },
-      { name: "Marigold", code: "7986" },
-      { name: "Garden Pink", code: "8090" },
-      { name: "Sunlit Sand", code: "7896" },
-      { name: "Fossil", code: "7985" },
-      { name: "Ballet Slippers", code: "8089" },
-      { name: "Turn of Sun", code: "7895" },
-      { name: "Sun-N-Sand", code: "7984" },
-      { name: "Fruit Pink", code: "9407" },
-      { name: "Burnished Sun", code: "7919" },
-      { name: "Roasted Sesame", code: "7975" },
-      { name: "Rose Meadows", code: "9406" },
-      { name: "Delicate Violet", code: "7164" },
-      { name: "Star Gaze", code: "7364" },
-      { name: "Menthol", code: "L118" },
-      { name: "Lavender Secret", code: "7163" },
-      { name: "Caribbean Sky", code: "7419" },
-      { name: "Spring Green", code: "9308" },
-      { name: "Innocence", code: "7211" },
-      { name: "Gulmarg Winters-N", code: "9656" },
-      { name: "Lime Grove", code: "7729" },
-      { name: "Lilac Feather-N", code: "9630" },
-      { name: "Soft Blue", code: "9210" },
-      { name: "Spring Surprise", code: "7728" },
-      { name: "Dash of Purple", code: "7160" },
-      { name: "Running Stream", code: "7408" },
-      { name: "Lime Accent", code: "7727" },
-      { name: "Heirloom", code: "7151" },
-      { name: "Hidden Springs", code: "7358" },
-      { name: "French Bean-N", code: "9821" },
-      { name: "Namak", code: "SV01" },
-      { name: "Muziris", code: "SV02" },
-      { name: "Mogra", code: "SV03" },
-      { name: "Sondesh", code: "SV07" },
-      { name: "Ellora", code: "SV10" },
-      { name: "Chikankari", code: "SV18" },
-      { name: "Muga Silk", code: "SV19" },
-      { name: "Kapas", code: "SV24" },
-      { name: "Jharokha", code: "SV21" },
-      { name: "Apricot Cream", code: "SA16" },
-      { name: "Crushed Nutmeg", code: "SA14" },
-      { name: "Velour Grey", code: "SA10" },
-      { name: "Chutney Green", code: "SA30" },
-      { name: "Betel Leaf", code: "SA31" },
-      { name: "Coromandel Indigo", code: "SA35" },
-      { name: "River Stone", code: "SA27" },
-      { name: "Sepoy Green", code: "SA26" },
-      { name: "Wet Turmeric", code: "SA28" }
+      { name: "Radiant White", code: "0997", hex: "#f4f5f0" },
+      { name: "Sugared Nut", code: "L126", hex: "#ede8dc" },
+      { name: "White Silk", code: "L171", hex: "#eef0e6" },
+      { name: "Sonnet", code: "L146", hex: "#edece6" },
+      { name: "Pure Ivory", code: "L124", hex: "#ece7d8" },
+      { name: "Ice Crystal", code: "8444", hex: "#e4e7e2" },
+      { name: "Morning Glory", code: "0765", hex: "#eae5d9" },
+      { name: "Pebble White", code: "L136", hex: "#e4ddd2" },
+      { name: "Confetti", code: "8300", hex: "#dadbd6" },
+      { name: "Whitener", code: "8476", hex: "#e5e3de" },
+      { name: "Down Dew-N", code: "L190", hex: "#dfd5c9" },
+      { name: "Whispering Smoke", code: "8308", hex: "#c8cac7" },
+      { name: "Beera Pearl-N", code: "0974", hex: "#dcd4cb" },
+      { name: "Milk Chocolate", code: "8537", hex: "#c7ab99" },
+      { name: "Silver Grey", code: "0615", hex: "#aeb3b5" },
+      { name: "Sands of Time", code: "4202", hex: "#b8afa2" },
+      { name: "Ethnic Brown", code: "8589", hex: "#965836" },
+      { name: "Smoke-N", code: "0616", hex: "#92999e" },
+      { name: "Candle Wick", code: "7907", hex: "#ece7c8" },
+      { name: "Apricot Illusion", code: "7979", hex: "#ebe2cb" },
+      { name: "Soft Breeze", code: "8116", hex: "#efe6ea" },
+      { name: "Eager Yellow", code: "7906", hex: "#ebe2b5" },
+      { name: "Orange Frost", code: "7978", hex: "#ebd9bd" },
+      { name: "Pale Blush", code: "8132", hex: "#eddde3" },
+      { name: "Summer Harvest", code: "7921", hex: "#ebd99b" },
+      { name: "Marigold", code: "7986", hex: "#ebd0b3" },
+      { name: "Garden Pink", code: "8090", hex: "#ecc7d2" },
+      { name: "Sunlit Sand", code: "7896", hex: "#e8cf7d" },
+      { name: "Fossil", code: "7985", hex: "#e8c29e" },
+      { name: "Ballet Slippers", code: "8089", hex: "#e8b0be" },
+      { name: "Turn of Sun", code: "7895", hex: "#e6c35c" },
+      { name: "Sun-N-Sand", code: "7984", hex: "#e5b083" },
+      { name: "Fruit Pink", code: "9407", hex: "#d67a8a" },
+      { name: "Burnished Sun", code: "7919", hex: "#e0b236" },
+      { name: "Roasted Sesame", code: "7975", hex: "#e09d5c" },
+      { name: "Rose Meadows", code: "9406", hex: "#c7586b" },
+      { name: "Delicate Violet", code: "7164", hex: "#e2dfe3" },
+      { name: "Star Gaze", code: "7364", hex: "#dce3e5" },
+      { name: "Menthol", code: "L118", hex: "#dce6dc" },
+      { name: "Lavender Secret", code: "7163", hex: "#d8d1db" },
+      { name: "Caribbean Sky", code: "7419", hex: "#cde0e3" },
+      { name: "Spring Green", code: "9308", hex: "#cfe0ce" },
+      { name: "Innocence", code: "7211", hex: "#ccc3d1" },
+      { name: "Gulmarg Winters-N", code: "9656", hex: "#b4d2db" },
+      { name: "Lime Grove", code: "7729", hex: "#bdd69e" },
+      { name: "Lilac Feather-N", code: "9630", hex: "#b8a9c4" },
+      { name: "Soft Blue", code: "9210", hex: "#8ebfd1" },
+      { name: "Spring Surprise", code: "7728", hex: "#a8ca7d" },
+      { name: "Dash of Purple", code: "7160", hex: "#a68eb5" },
+      { name: "Running Stream", code: "7408", hex: "#4ca6c4" },
+      { name: "Lime Accent", code: "7727", hex: "#8eb854" },
+      { name: "Heirloom", code: "7151", hex: "#8e6fa1" },
+      { name: "Hidden Springs", code: "7358", hex: "#1c74a8" },
+      { name: "French Bean-N", code: "9821", hex: "#689e2e" },
+      { name: "Namak", code: "SV01", hex: "#ecece3" },
+      { name: "Muziris", code: "SV02", hex: "#e6ece8" },
+      { name: "Mogra", code: "SV03", hex: "#e8ece8" },
+      { name: "Sondesh", code: "SV07", hex: "#e8e7dc" },
+      { name: "Ellora", code: "SV10", hex: "#e2e6e1" },
+      { name: "Chikankari", code: "SV18", hex: "#e0e7e4" },
+      { name: "Muga Silk", code: "SV19", hex: "#e5e2d3" },
+      { name: "Kapas", code: "SV24", hex: "#e4e3dc" },
+      { name: "Jharokha", code: "SV21", hex: "#eadad6" },
+      { name: "Apricot Cream", code: "SA16", hex: "#b88a8c" },
+      { name: "Crushed Nutmeg", code: "SA14", hex: "#634b48" },
+      { name: "Velour Grey", code: "SA10", hex: "#9c9a9e" },
+      { name: "Chutney Green", code: "SA30", hex: "#76948e" },
+      { name: "Betel Leaf", code: "SA31", hex: "#527868" },
+      { name: "Coromandel Indigo", code: "SA35", hex: "#283354" },
+      { name: "River Stone", code: "SA27", hex: "#8c643c" },
+      { name: "Sepoy Green", code: "SA26", hex: "#59523c" },
+      { name: "Wet Turmeric", code: "SA28", hex: "#bd8e1c" }
     ];
 
     let activeList = [];
@@ -418,7 +506,7 @@
         activeSectionLabel = "દીવાલ માટે (Wall Paint)";
       }
 
-      document.getElementById("sectionHeading").innerText = `${activeSectionLabel} - કલર પસંદ કરો 👇`;
+      document.getElementById("sectionHeading").innerText = `${activeSectionLabel} - કલર મોટો જોવા ક્લિક કરો 👇`;
       document.getElementById("searchInput").value = "";
       renderShades(activeList);
     }
@@ -437,10 +525,13 @@
         const card = document.createElement("div");
         card.className = "color-card";
         card.innerHTML = `
-          <div class="color-name">${item.name}</div>
-          <div class="color-code">Code: ${item.code}</div>
+          <div class="swatch" style="background:${item.hex};"></div>
+          <div class="card-body">
+            <div class="color-name">${item.name}</div>
+            <div class="color-code">${item.code}</div>
+          </div>
         `;
-        card.onclick = () => sendWhatsApp(item);
+        card.onclick = () => showPreview(item);
         grid.appendChild(card);
       });
     }
@@ -453,9 +544,20 @@
       renderShades(filtered);
     }
 
-    function sendWhatsApp(item) {
-      const msg = `નમસ્તે Patel Royal Color and Paints (Jambusar),%0Aમને આ કલર જોઈએ છે:%0A🖌️ *વિભાગ:* ${activeSectionLabel}%0A🎨 *કલર:* ${item.name} (Code: ${item.code})`;
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+    function showPreview(item) {
+      document.getElementById("bigSwatch").style.background = item.hex;
+      document.getElementById("previewSec").innerText = activeSectionLabel;
+      document.getElementById("previewName").innerText = item.name;
+      document.getElementById("previewCode").innerText = `Shade Code: ${item.code}`;
+      document.getElementById("previewOverlay").classList.add("show");
+    }
+
+    function hidePreview() {
+      document.getElementById("previewOverlay").classList.remove("show");
+    }
+
+    function closePreview(e) {
+      if (e.target.id === "previewOverlay") hidePreview();
     }
   </script>
 </body>
