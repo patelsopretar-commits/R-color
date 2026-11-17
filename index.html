@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Patel Royal Color and Paints - Jambusar</title>
-  <meta name="description" content="Patel Royal Color and Paints, Jambusar - Metal, Wood and Wall Paints." />
+  <meta name="description" content="Patel Royal Color and Paints, Jambusar - Official Shade Catalog for Metal, Wood and Wall Paints." />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-    body { background: #f1f5f9; color: #0f172a; padding-bottom: 40px; }
+    body { background: #f1f5f9; color: #0f172a; padding-bottom: 45px; }
 
     header {
       background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
@@ -19,12 +19,14 @@
     header h1 { font-size: 1.4rem; font-weight: 800; letter-spacing: 0.3px; }
     header p { font-size: 0.88rem; opacity: 0.92; margin-top: 4px; }
 
-    .container { max-width: 720px; margin: 22px auto; padding: 0 15px; }
+    .container { max-width: 760px; margin: 20px auto; padding: 0 14px; }
 
     .top-bar {
       display: flex;
       align-items: center;
-      margin-bottom: 16px;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 10px;
     }
     .back-btn {
       background: #fff;
@@ -39,12 +41,21 @@
     }
     .back-btn:active { background: #eff6ff; }
 
+    .count-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      background: #dbeafe;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
     .step-title {
       font-size: 1.08rem;
       font-weight: 700;
       color: #1e293b;
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     /* Step 1: Main Category */
@@ -92,30 +103,53 @@
     .sec-title { font-size: 1.12rem; font-weight: 800; color: #1e3a8a; }
     .sec-sub { font-size: 0.84rem; color: #64748b; margin-top: 5px; }
 
-    /* Step 3: Placeholder for Catalog Photo */
-    .catalog-card {
-      background: #fff;
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 32px 20px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-    }
-    .catalog-card h2 { font-size: 1.25rem; color: #1e3a8a; margin-bottom: 8px; }
-    .catalog-card p { font-size: 0.92rem; color: #475569; margin-bottom: 20px; }
-    .wa-btn {
-      display: inline-block;
-      background: #16a34a;
-      color: #fff;
-      font-weight: 700;
+    /* Search Box */
+    .search-box {
+      width: 100%;
+      padding: 12px 15px;
       font-size: 0.95rem;
-      padding: 12px 22px;
+      border: 2px solid #cbd5e1;
       border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(22, 163, 74, 0.25);
+      margin-bottom: 14px;
+      outline: none;
+      background: #fff;
     }
-    .wa-btn:active { background: #15803d; }
+    .search-box:focus { border-color: #2563eb; }
+
+    /* Step 3: Shade Name & Code Boxes (No Color Swatch, No Price) */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @media (min-width: 540px) {
+      .color-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .color-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      cursor: pointer;
+      border: 1.5px solid #e2e8f0;
+      transition: transform 0.12s, border-color 0.12s, background 0.12s;
+    }
+    .color-card:hover, .color-card:active {
+      border-color: #2563eb;
+      background: #eff6ff;
+      transform: scale(0.98);
+    }
+    .color-name { font-size: 0.95rem; font-weight: 700; color: #1e3a8a; }
+    .color-code { font-size: 0.82rem; font-weight: 600; color: #475569; margin-top: 4px; }
+
+    .empty-msg {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      font-size: 0.95rem;
+      grid-column: 1 / -1;
+    }
 
     .hidden { display: none !important; }
   </style>
@@ -146,30 +180,29 @@
       </div>
       <div class="step-title">કલર શેના માટે જોઈએ છે? પસંદ કરો 👇</div>
       <div class="two-section-grid">
-        <div class="section-box" onclick="goToStep3('લોખંડ / લાકડું (Metal & Wood)')">
+        <div class="section-box" onclick="goToStep3('metal')">
           <span class="sec-icon">🚪</span>
           <div class="sec-title">લોખંડ / લાકડું</div>
-          <div class="sec-sub">Metal & Wood Paint</div>
+          <div class="sec-sub">Apcolite Enamel Shades</div>
         </div>
 
-        <div class="section-box" onclick="goToStep3('દીવાલ માટે (Wall Paint)')">
+        <div class="section-box" onclick="goToStep3('wall')">
           <span class="sec-icon">🏠</span>
           <div class="sec-title">દીવાલ માટે</div>
-          <div class="sec-sub">Wall Paint</div>
+          <div class="sec-sub">Wall Paint Shades</div>
         </div>
       </div>
     </div>
 
-    <!-- STEP 3: READY FOR CATALOG PHOTO -->
+    <!-- STEP 3: SHADE NAMES & CODES -->
     <div id="step3" class="hidden">
       <div class="top-bar">
         <button class="back-btn" onclick="goToStep2()">← પાછા જાઓ</button>
+        <span class="count-badge" id="shadeCount">0 Shades</span>
       </div>
-      <div class="catalog-card">
-        <h2 id="sectionHeading">વિભાગ</h2>
-        <p>કલર કેટલોગ ટૂંક સમયમાં અહીં મુકવામાં આવશે.<br>વધુ માહિતી માટે સીધો WhatsApp પર સંપર્ક કરો.</p>
-        <button class="wa-btn" onclick="openWhatsApp()">💬 WhatsApp પર પૂછો</button>
-      </div>
+      <div class="step-title" id="sectionHeading">કલરનું નામ પસંદ કરો 👇</div>
+      <input type="text" id="searchInput" class="search-box" placeholder="🔍 કલરનું નામ અથવા નંબર લખો (દા.ત. Phirozi, 0765)..." oninput="filterShades()" />
+      <div class="color-grid" id="colorGrid"></div>
     </div>
 
   </div>
@@ -178,7 +211,187 @@
     // અહીં તમારો WhatsApp નંબર 91 સાથે લખો
     const WHATSAPP_NUMBER = "919876543210";
 
-    let selectedSection = "";
+    // 1. લોખંડ / લાકડું (Apcolite Enamel Catalog Shades)
+    const metalWoodShades = [
+      { name: "Pista", code: "0292" },
+      { name: "Cascade Green", code: "2370" },
+      { name: "Aquamarine (G)", code: "0202" },
+      { name: "Water Green", code: "0246" },
+      { name: "Mint Green", code: "0253" },
+      { name: "Bus Green", code: "0209" },
+      { name: "Dark Green", code: "0212" },
+      { name: "Satin Blue", code: "0124" },
+      { name: "Wild Lilac", code: "0712" },
+      { name: "Sky Blue", code: "0125" },
+      { name: "Wild Purple", code: "0718" },
+      { name: "Phirozi", code: "0121" },
+      { name: "French Blue", code: "0112" },
+      { name: "Oxford Blue", code: "0119" },
+      { name: "Candy", code: "0478" },
+      { name: "Petal", code: "0P05" },
+      { name: "Pale Rose (G)", code: "0421" },
+      { name: "Dawn Glow", code: "0562" },
+      { name: "Deep Orange", code: "0506" },
+      { name: "Signal Red", code: "0520" },
+      { name: "PO Red", code: "0518" },
+      { name: "Light Cream", code: "0Y02" },
+      { name: "Off White", code: "0905" },
+      { name: "Royal Ivory", code: "0331" },
+      { name: "Pale Cream", code: "0328" },
+      { name: "Golden Yellow", code: "0313" },
+      { name: "Lemon Yellow", code: "0317" },
+      { name: "Mid Buff (G)", code: "0324" },
+      { name: "Jasmine Wisp-N", code: "0943" },
+      { name: "Blue Bell White", code: "0J32" },
+      { name: "Mushroom", code: "0422" },
+      { name: "Nickel Grey", code: "6126" },
+      { name: "Light Grey", code: "6116" },
+      { name: "Smoke Grey (G)", code: "6134" },
+      { name: "Ad. Grey", code: "0601" },
+      { name: "Coral Shell", code: "0951" },
+      { name: "Sandal Wood", code: "0485" },
+      { name: "Raw Silk", code: "0351" },
+      { name: "Suede", code: "0N01" },
+      { name: "Dawn", code: "0469" },
+      { name: "Brandy (G)", code: "0N45" },
+      { name: "Sandstone (G)", code: "0333" },
+      { name: "Gold (Metallic)", code: "Metallic" },
+      { name: "Silver (Metallic)", code: "Metallic" },
+      { name: "Leaf Brown", code: "0415" },
+      { name: "Golden Brown", code: "0413" },
+      { name: "Bay Brown", code: "4255" },
+      { name: "Teak Brown", code: "4244" },
+      { name: "Imperial Crimson", code: "0510" },
+      { name: "Deep Mahogany", code: "4284" },
+      { name: "Mercedes Red", code: "0514" },
+      { name: "Brown", code: "0403" },
+      { name: "Special Truck Brown", code: "4293" },
+      { name: "Special Teak (Satin)", code: "4285" },
+      { name: "Timber Golden Brown (Satin)", code: "4290" },
+      { name: "Timber Brown (Satin)", code: "4264" },
+      { name: "Rich Rosewood (Satin)", code: "4291" },
+      { name: "Mahogany (Satin)", code: "0R05" },
+      { name: "Teakwood (Satin)", code: "4292" },
+      { name: "Satin Brown", code: "4254" },
+      { name: "Walnut Brown (Satin)", code: "4265" },
+      { name: "Nutbrown-N (Satin)", code: "0419" },
+      { name: "Morning Glory (Satin)", code: "0765" },
+      { name: "Sugared Nut (Satin)", code: "L126" },
+      { name: "Pebble White (Satin)", code: "L136" },
+      { name: "Antique White (Satin)", code: "0940" },
+      { name: "Silver Grey (Satin)", code: "0615" },
+      { name: "Metallic Grey (Satin)", code: "8296" },
+      { name: "Dusk Cloud (Satin)", code: "8287" },
+      { name: "Natural Linen (Satin)", code: "L132" },
+      { name: "Cream (Satin)", code: "0307" },
+      { name: "Summer Sprinkle (Satin)", code: "7923" },
+      { name: "Lemon Burst (Satin)", code: "7864" },
+      { name: "Tons Of Sun (Satin)", code: "7895" },
+      { name: "Lemon Ole (Satin)", code: "X105" },
+      { name: "Empire Yellow (Satin)", code: "7918" },
+      { name: "Twilight Hush (Satin)", code: "0944" },
+      { name: "Rose Bud (Satin)", code: "8035" },
+      { name: "Palace Lights-N (Satin)", code: "0N17" },
+      { name: "Pink Dollop (Satin)", code: "8098" },
+      { name: "Pink Linen (Satin)", code: "8056" },
+      { name: "Petal Pink (Satin)", code: "8119" },
+      { name: "Wild Berry (Satin)", code: "8110" },
+      { name: "Aquamint (Satin)", code: "L114" },
+      { name: "Oceans Whisper (Satin)", code: "7436" },
+      { name: "Classic (Satin)", code: "1263" },
+      { name: "New Day (Satin)", code: "7410" },
+      { name: "Blue Curacao (Satin)", code: "7360" },
+      { name: "Blue Glory (Satin)", code: "7247" },
+      { name: "Lost Blue (Satin)", code: "9182" },
+      { name: "Lemon Grass (Satin)", code: "7747" },
+      { name: "Misty Spring (Satin)", code: "7658" },
+      { name: "Exotic Sea (Satin)", code: "9298" },
+      { name: "Harvest Season (Satin)", code: "7757" },
+      { name: "Lemonade (Satin)", code: "7830" },
+      { name: "Sporting Green (Satin)", code: "7741" },
+      { name: "Jungle Trail (Satin)", code: "7545" },
+      { name: "Black", code: "0601" },
+      { name: "Brilliant White", code: "0912" }
+    ];
+
+    // 2. દીવાલ માટે (Wall Paint Catalog Shades)
+    const wallShades = [
+      { name: "Radiant White", code: "0997" },
+      { name: "Sugared Nut", code: "L126" },
+      { name: "White Silk", code: "L171" },
+      { name: "Sonnet", code: "L146" },
+      { name: "Pure Ivory", code: "L124" },
+      { name: "Ice Crystal", code: "8444" },
+      { name: "Morning Glory", code: "0765" },
+      { name: "Pebble White", code: "L136" },
+      { name: "Confetti", code: "8300" },
+      { name: "Whitener", code: "8476" },
+      { name: "Down Dew-N", code: "L190" },
+      { name: "Whispering Smoke", code: "8308" },
+      { name: "Beera Pearl-N", code: "0974" },
+      { name: "Milk Chocolate", code: "8537" },
+      { name: "Silver Grey", code: "0615" },
+      { name: "Sands of Time", code: "4202" },
+      { name: "Ethnic Brown", code: "8589" },
+      { name: "Smoke-N", code: "0616" },
+      { name: "Candle Wick", code: "7907" },
+      { name: "Apricot Illusion", code: "7979" },
+      { name: "Soft Breeze", code: "8116" },
+      { name: "Eager Yellow", code: "7906" },
+      { name: "Orange Frost", code: "7978" },
+      { name: "Pale Blush", code: "8132" },
+      { name: "Summer Harvest", code: "7921" },
+      { name: "Marigold", code: "7986" },
+      { name: "Garden Pink", code: "8090" },
+      { name: "Sunlit Sand", code: "7896" },
+      { name: "Fossil", code: "7985" },
+      { name: "Ballet Slippers", code: "8089" },
+      { name: "Turn of Sun", code: "7895" },
+      { name: "Sun-N-Sand", code: "7984" },
+      { name: "Fruit Pink", code: "9407" },
+      { name: "Burnished Sun", code: "7919" },
+      { name: "Roasted Sesame", code: "7975" },
+      { name: "Rose Meadows", code: "9406" },
+      { name: "Delicate Violet", code: "7164" },
+      { name: "Star Gaze", code: "7364" },
+      { name: "Menthol", code: "L118" },
+      { name: "Lavender Secret", code: "7163" },
+      { name: "Caribbean Sky", code: "7419" },
+      { name: "Spring Green", code: "9308" },
+      { name: "Innocence", code: "7211" },
+      { name: "Gulmarg Winters-N", code: "9656" },
+      { name: "Lime Grove", code: "7729" },
+      { name: "Lilac Feather-N", code: "9630" },
+      { name: "Soft Blue", code: "9210" },
+      { name: "Spring Surprise", code: "7728" },
+      { name: "Dash of Purple", code: "7160" },
+      { name: "Running Stream", code: "7408" },
+      { name: "Lime Accent", code: "7727" },
+      { name: "Heirloom", code: "7151" },
+      { name: "Hidden Springs", code: "7358" },
+      { name: "French Bean-N", code: "9821" },
+      { name: "Namak", code: "SV01" },
+      { name: "Muziris", code: "SV02" },
+      { name: "Mogra", code: "SV03" },
+      { name: "Sondesh", code: "SV07" },
+      { name: "Ellora", code: "SV10" },
+      { name: "Chikankari", code: "SV18" },
+      { name: "Muga Silk", code: "SV19" },
+      { name: "Kapas", code: "SV24" },
+      { name: "Jharokha", code: "SV21" },
+      { name: "Apricot Cream", code: "SA16" },
+      { name: "Crushed Nutmeg", code: "SA14" },
+      { name: "Velour Grey", code: "SA10" },
+      { name: "Chutney Green", code: "SA30" },
+      { name: "Betel Leaf", code: "SA31" },
+      { name: "Coromandel Indigo", code: "SA35" },
+      { name: "River Stone", code: "SA27" },
+      { name: "Sepoy Green", code: "SA26" },
+      { name: "Wet Turmeric", code: "SA28" }
+    ];
+
+    let activeList = [];
+    let activeSectionLabel = "";
 
     function goToStep1() {
       document.getElementById("step1").classList.remove("hidden");
@@ -192,16 +405,56 @@
       document.getElementById("step3").classList.add("hidden");
     }
 
-    function goToStep3(sectionName) {
-      selectedSection = sectionName;
+    function goToStep3(type) {
       document.getElementById("step1").classList.add("hidden");
       document.getElementById("step2").classList.add("hidden");
       document.getElementById("step3").classList.remove("hidden");
-      document.getElementById("sectionHeading").innerText = sectionName;
+
+      if (type === "metal") {
+        activeList = metalWoodShades;
+        activeSectionLabel = "લોખંડ / લાકડું (Metal & Wood)";
+      } else {
+        activeList = wallShades;
+        activeSectionLabel = "દીવાલ માટે (Wall Paint)";
+      }
+
+      document.getElementById("sectionHeading").innerText = `${activeSectionLabel} - કલર પસંદ કરો 👇`;
+      document.getElementById("searchInput").value = "";
+      renderShades(activeList);
     }
 
-    function openWhatsApp() {
-      const msg = `નમસ્તે Patel Royal Color and Paints (Jambusar),%0Aમારે *${selectedSection}* માટે કલરની માહિતી જોઈએ છે.`;
+    function renderShades(list) {
+      const grid = document.getElementById("colorGrid");
+      document.getElementById("shadeCount").innerText = `${list.length} Shades`;
+      grid.innerHTML = "";
+
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="empty-msg">કોઈ કલર મળ્યો નથી. બીજું નામ અથવા નંબર લખો.</div>`;
+        return;
+      }
+
+      list.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "color-card";
+        card.innerHTML = `
+          <div class="color-name">${item.name}</div>
+          <div class="color-code">Code: ${item.code}</div>
+        `;
+        card.onclick = () => sendWhatsApp(item);
+        grid.appendChild(card);
+      });
+    }
+
+    function filterShades() {
+      const q = document.getElementById("searchInput").value.toLowerCase().trim();
+      const filtered = activeList.filter(item =>
+        item.name.toLowerCase().includes(q) || item.code.toLowerCase().includes(q)
+      );
+      renderShades(filtered);
+    }
+
+    function sendWhatsApp(item) {
+      const msg = `નમસ્તે Patel Royal Color and Paints (Jambusar),%0Aમને આ કલર જોઈએ છે:%0A🖌️ *વિભાગ:* ${activeSectionLabel}%0A🎨 *કલર:* ${item.name} (Code: ${item.code})`;
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
     }
   </script>
