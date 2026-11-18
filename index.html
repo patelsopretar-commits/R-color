@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
   <title>Patel Royal Color and Paints - Jambusar</title>
-  <meta name="description" content="Patel Royal Color and Paints, Jambusar - Official Digital Shade Card for Wall, Metal & Wood Paints." />
+  <meta name="description" content="Patel Royal Color and Paints, Jambusar - Official Digital Shade Card." />
   <style>
     :root { color-scheme: light; }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-    body { background: #f1f5f9 !important; color: #0f172a !important; padding-bottom: 50px; }
+    body { background: #e2e8f0; color: #0f172a; padding-bottom: 50px; }
 
     header {
-      background: #1e3a8a !important;
-      color: #ffffff !important;
+      background: #1e3a8a;
+      color: #ffffff;
       text-align: center;
       padding: 20px 16px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.15);
@@ -21,7 +21,7 @@
     header h1 { font-size: 1.38rem; font-weight: 800; letter-spacing: 0.3px; }
     header p { font-size: 0.86rem; opacity: 0.94; margin-top: 4px; }
 
-    .container { max-width: 820px; margin: 18px auto; padding: 0 14px; }
+    .container { max-width: 820px; margin: 18px auto; padding: 0 12px; }
 
     .top-bar {
       display: flex;
@@ -31,22 +31,21 @@
       gap: 10px;
     }
     .back-btn {
-      background: #ffffff !important;
+      background: #ffffff;
       border: 1.5px solid #cbd5e1;
-      color: #1e3a8a !important;
+      color: #1e3a8a;
       font-weight: 700;
       font-size: 0.88rem;
       padding: 8px 14px;
       border-radius: 10px;
       cursor: pointer;
     }
-    .back-btn:active { background: #eff6ff !important; }
 
     .count-badge {
       font-size: 0.82rem;
       font-weight: 700;
-      color: #1e3a8a !important;
-      background: #dbeafe !important;
+      color: #1e3a8a;
+      background: #dbeafe;
       padding: 6px 12px;
       border-radius: 20px;
     }
@@ -54,14 +53,14 @@
     .step-title {
       font-size: 1.05rem;
       font-weight: 700;
-      color: #1e293b !important;
+      color: #1e293b;
       text-align: center;
       margin-bottom: 14px;
     }
 
-    /* Step 1: Main Category */
+    /* Step 1 */
     .big-box {
-      background: #ffffff !important;
+      background: #ffffff;
       border: 2px solid #dbeafe;
       border-radius: 16px;
       padding: 32px 20px;
@@ -69,19 +68,18 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(30, 58, 138, 0.08);
     }
-    .big-box:active { background: #eff6ff !important; transform: scale(0.98); }
     .big-icon { font-size: 2.6rem; display: block; margin-bottom: 10px; }
-    .big-title { font-size: 1.4rem; font-weight: 800; color: #1e3a8a !important; }
-    .big-sub { font-size: 0.9rem; color: #475569 !important; margin-top: 6px; }
+    .big-title { font-size: 1.4rem; font-weight: 800; color: #1e3a8a; }
+    .big-sub { font-size: 0.9rem; color: #475569; margin-top: 6px; }
 
-    /* Step 2: Two Sections */
+    /* Step 2 */
     .two-section-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
     }
     .section-box {
-      background: #ffffff !important;
+      background: #ffffff;
       border: 2px solid #cbd5e1;
       border-radius: 16px;
       padding: 30px 14px;
@@ -89,10 +87,9 @@
       cursor: pointer;
       box-shadow: 0 3px 10px rgba(0,0,0,0.07);
     }
-    .section-box:active { background: #eff6ff !important; transform: scale(0.98); }
     .sec-icon { font-size: 2.3rem; display: block; margin-bottom: 10px; }
-    .sec-title { font-size: 1.12rem; font-weight: 800; color: #1e3a8a !important; }
-    .sec-sub { font-size: 0.84rem; color: #64748b !important; margin-top: 5px; }
+    .sec-title { font-size: 1.12rem; font-weight: 800; color: #1e3a8a; }
+    .sec-sub { font-size: 0.84rem; color: #64748b; margin-top: 5px; }
 
     /* Catalog Vibhag Tabs */
     .vibhag-bar {
@@ -106,8 +103,8 @@
     .vibhag-bar::-webkit-scrollbar { display: none; }
     .vibhag-btn {
       flex: 0 0 auto;
-      background: #ffffff !important;
-      color: #1e293b !important;
+      background: #ffffff;
+      color: #1e293b;
       border: 1.5px solid #cbd5e1;
       padding: 9px 14px;
       border-radius: 20px;
@@ -117,8 +114,8 @@
       white-space: nowrap;
     }
     .vibhag-btn.active {
-      background: #1e3a8a !important;
-      color: #ffffff !important;
+      background: #1e3a8a;
+      color: #ffffff;
       border-color: #1e3a8a;
     }
 
@@ -131,46 +128,60 @@
       border-radius: 12px;
       margin-bottom: 14px;
       outline: none;
-      background: #ffffff !important;
-      color: #0f172a !important;
+      background: #ffffff;
+      color: #0f172a;
     }
-    .search-box:focus { border-color: #2563eb; }
+
+    /* Catalog Page Sheet Look */
+    .catalog-sheet {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 12px 8px;
+      border: 1px solid #cbd5e1;
+    }
+    .sheet-header {
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1.5px solid #cbd5e1;
+    }
 
     /* 3 Columns Shade Card Grid */
     .color-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 9px;
+      gap: 8px;
     }
     .color-card {
-      background: #ffffff !important;
-      border-radius: 10px;
+      background: #ffffff;
+      border-radius: 8px;
       overflow: hidden;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.07);
       cursor: pointer;
-      border: 1.5px solid #cbd5e1;
+      border: 1px solid #cbd5e1;
     }
-    .color-card:active { border-color: #2563eb; transform: scale(0.98); }
-    .swatch-svg {
+    .swatch-img {
       display: block;
       width: 100%;
-      height: 78px;
+      height: 82px;
+      object-fit: cover;
       border-bottom: 1px solid #e2e8f0;
     }
     .card-body {
-      padding: 8px 5px;
-      background: #ffffff !important;
+      padding: 7px 4px;
     }
-    .color-name { font-size: 0.82rem; font-weight: 700; color: #0f172a !important; line-height: 1.2; }
-    .color-code { font-size: 0.74rem; font-weight: 600; color: #475569 !important; margin-top: 3px; }
+    .color-name { font-size: 0.8rem; font-weight: 700; color: #0f172a; line-height: 1.2; }
+    .color-code { font-size: 0.72rem; font-weight: 600; color: #475569; margin-top: 2px; }
 
     /* Full Color Preview Popup */
     .preview-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.78);
+      background: rgba(15, 23, 42, 0.8);
       align-items: center;
       justify-content: center;
       padding: 18px;
@@ -178,7 +189,7 @@
     }
     .preview-overlay.show { display: flex; }
     .preview-box {
-      background: #ffffff !important;
+      background: #ffffff;
       width: 100%;
       max-width: 370px;
       border-radius: 18px;
@@ -186,37 +197,29 @@
       text-align: center;
       box-shadow: 0 12px 30px rgba(0,0,0,0.35);
     }
-    .big-swatch-svg {
+    .big-swatch-img {
       display: block;
       width: 100%;
-      height: 220px;
+      height: 230px;
+      object-fit: cover;
       border-bottom: 1px solid #e2e8f0;
     }
     .preview-details {
       padding: 18px 16px;
-      background: #ffffff !important;
     }
-    .preview-sec { font-size: 0.78rem; font-weight: 700; color: #2563eb !important; }
-    .preview-name { font-size: 1.32rem; font-weight: 800; color: #0f172a !important; margin-top: 6px; }
-    .preview-code { font-size: 0.92rem; font-weight: 600; color: #475569 !important; margin-top: 4px; }
+    .preview-sec { font-size: 0.78rem; font-weight: 700; color: #2563eb; }
+    .preview-name { font-size: 1.32rem; font-weight: 800; color: #0f172a; margin-top: 6px; }
+    .preview-code { font-size: 0.92rem; font-weight: 600; color: #475569; margin-top: 4px; }
     .close-preview-btn {
       margin-top: 16px;
-      background: #1e3a8a !important;
-      color: #ffffff !important;
+      background: #1e3a8a;
+      color: #ffffff;
       border: none;
       padding: 11px 28px;
       border-radius: 10px;
       font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
-    }
-
-    .empty-msg {
-      text-align: center;
-      padding: 25px;
-      color: #64748b !important;
-      font-size: 0.95rem;
-      grid-column: 1 / -1;
     }
 
     .hidden { display: none !important; }
@@ -268,12 +271,15 @@
         <button class="back-btn" onclick="goToStep2()">← પાછા જાઓ</button>
         <span class="count-badge" id="shadeCount">0 Shades</span>
       </div>
-      <div class="step-title" id="sectionHeading">વિભાગ પસંદ કરો 👇</div>
 
       <div class="vibhag-bar" id="vibhagBar"></div>
 
       <input type="text" id="searchInput" class="search-box" placeholder="🔍 બધા વિભાગમાંથી કલર શોધો (નામ અથવા નંબર)..." oninput="filterShades()" />
-      <div class="color-grid" id="colorGrid"></div>
+
+      <div class="catalog-sheet">
+        <div class="sheet-header" id="sheetTitle">Catalog Vibhag</div>
+        <div class="color-grid" id="colorGrid"></div>
+      </div>
     </div>
 
   </div>
@@ -281,9 +287,7 @@
   <!-- LARGE COLOR PREVIEW POPUP -->
   <div class="preview-overlay" id="previewOverlay" onclick="closePreview(event)">
     <div class="preview-box" onclick="event.stopPropagation()">
-      <svg class="big-swatch-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <rect id="bigSwatchRect" width="100" height="100" fill="#ffffff"></rect>
-      </svg>
+      <img class="big-swatch-img" id="bigSwatchImg" alt="Shade Preview" />
       <div class="preview-details">
         <div class="preview-sec" id="previewSec">વિભાગ</div>
         <div class="preview-name" id="previewName">Color Name</div>
@@ -294,6 +298,21 @@
   </div>
 
   <script>
+    // Real PNG Image Generator (Dark Mode CANNOT invert real PNG images!)
+    const pngCache = {};
+    function getRealColorPng(hex) {
+      if (pngCache[hex]) return pngCache[hex];
+      const canvas = document.createElement("canvas");
+      canvas.width = 40;
+      canvas.height = 40;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = hex;
+      ctx.fillRect(0, 0, 40, 40);
+      const url = canvas.toDataURL("image/png");
+      pngCache[hex] = url;
+      return url;
+    }
+
     // 1. લોખંડ / લાકડું (Exact Catalog Order - Row by Row)
     const metalWoodShades = [
       // Page 1: Greens, Blues & Reds (Gloss)
@@ -619,7 +638,6 @@
       const vibhags = [...new Set(activeList.map(item => item.vibhag))];
       selectedVibhag = vibhags[0];
 
-      document.getElementById("sectionHeading").innerText = `${activeSectionLabel} - કેટલોગ વિભાગ પસંદ કરો 👇`;
       document.getElementById("searchInput").value = "";
       buildVibhagTabs(vibhags);
       applyFilters();
@@ -655,6 +673,7 @@
         }
         return item.vibhag === selectedVibhag;
       });
+      document.getElementById("sheetTitle").innerText = q.length > 0 ? `Search Results (${filtered.length})` : selectedVibhag;
       renderShades(filtered);
     }
 
@@ -663,18 +682,12 @@
       document.getElementById("shadeCount").innerText = `${list.length} Shades`;
       grid.innerHTML = "";
 
-      if (list.length === 0) {
-        grid.innerHTML = `<div class="empty-msg">કોઈ કલર મળ્યો નથી. બીજું નામ અથવા નંબર લખો.</div>`;
-        return;
-      }
-
       list.forEach(item => {
         const card = document.createElement("div");
         card.className = "color-card";
+        const pngUrl = getRealColorPng(item.hex);
         card.innerHTML = `
-          <svg class="swatch-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <rect width="100" height="100" fill="${item.hex}"></rect>
-          </svg>
+          <img class="swatch-img" src="${pngUrl}" alt="${item.name}" />
           <div class="card-body">
             <div class="color-name">${item.name}</div>
             <div class="color-code">${item.code}</div>
@@ -686,7 +699,7 @@
     }
 
     function showPreview(item) {
-      document.getElementById("bigSwatchRect").setAttribute("fill", item.hex);
+      document.getElementById("bigSwatchImg").src = getRealColorPng(item.hex);
       document.getElementById("previewSec").innerText = `${activeSectionLabel} • ${item.vibhag}`;
       document.getElementById("previewName").innerText = item.name;
       document.getElementById("previewCode").innerText = `Shade Code: ${item.code}`;
