@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="light" />
+  <meta name="color-scheme" content="only light" />
   <title>Patel Royal Color and Paints - Jambusar</title>
   <style>
-    :root { color-scheme: light; }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-    body { background: #e2e8f0; color: #0f172a; padding-bottom: 50px; }
+    :root { color-scheme: only light; forced-color-adjust: none; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; forced-color-adjust: none; }
+    body { background: #eef2f6; color: #0f172a; padding-bottom: 50px; }
 
     header {
       background: #1e3a8a;
@@ -90,7 +90,7 @@
     .sec-title { font-size: 1.12rem; font-weight: 800; color: #1e3a8a; }
     .sec-sub { font-size: 0.84rem; color: #64748b; margin-top: 5px; }
 
-    /* Wrapped Vibhag Tabs (All Visible Together) */
+    /* Wrapped Vibhag Tabs */
     .vibhag-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -129,7 +129,7 @@
 
     /* Catalog Sheet Box */
     .catalog-sheet {
-      background: #f1f1ef;
+      background: #f5f5f4;
       border-radius: 14px;
       padding: 14px 10px;
       border: 1.5px solid #cbd5e1;
@@ -162,7 +162,7 @@
     .swatch-img {
       display: block;
       width: 100%;
-      height: 80px;
+      height: 82px;
       object-fit: cover;
       border-bottom: 1px solid #e5e7eb;
     }
@@ -335,20 +335,20 @@
       return url;
     }
 
-    // 1. લોખંડ / લાકડું (Exact 5 Pages Shown by You)
+    // 1. લોખંડ / લાકડું (Apcolite Enamel Catalog)
     const metalWoodShades = [
       // Page 1: Greens, Blues & Reds (Gloss)
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Pista", code: "0292", hex: "#96c993" },
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Satin Blue", code: "0124", hex: "#62b5cc" },
-      { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Candy", code: "0478", hex: "#ead5ce" },
+      { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Candy", code: "0478", hex: "#f2e2dc" },
 
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Cascade Green", code: "2370", hex: "#71c26b" },
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Wild Lilac", code: "0712", hex: "#9b93c2" },
-      { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Petal", code: "0P05", hex: "#dfd2d7" },
+      { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Petal", code: "0P05", hex: "#e8dde1" },
 
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Aquamarine (G)", code: "0202", hex: "#3fb398" },
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Sky Blue", code: "0125", hex: "#009fd4" },
-      { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Pale Rose (G)", code: "0421", hex: "#e3a39b" },
+      { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Pale Rose (G)", code: "0421", hex: "#e8aba3" },
 
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Water Green", code: "0246", hex: "#50a64b" },
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "Wild Purple", code: "0718", hex: "#6e4c9e" },
@@ -367,41 +367,41 @@
       { vibhag: "1. Greens, Blues & Reds (Gloss)", name: "PO Red", code: "0518", hex: "#a80008" },
 
       // Page 2: Yellows, Greys & Beiges (Gloss)
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Light Cream", code: "0Y02", hex: "#e6e3bc" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Jasmine Wisp-N", code: "0943", hex: "#dbe0cc" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Coral Shell", code: "0951", hex: "#ebe3ce" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Light Cream", code: "0Y02", hex: "#f0edc8" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Jasmine Wisp-N", code: "0943", hex: "#e5ead7" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Coral Shell", code: "0951", hex: "#f5eedb" },
 
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Off White", code: "0905", hex: "#dfd9b2" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Blue Bell White", code: "0J32", hex: "#d5d9d2" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Sandal Wood", code: "0485", hex: "#e4d7bd" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Off White", code: "0905", hex: "#eae4be" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Blue Bell White", code: "0J32", hex: "#dfe3dc" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Sandal Wood", code: "0485", hex: "#ede0c7" },
 
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Royal Ivory", code: "0331", hex: "#dfd29b" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Mushroom", code: "0422", hex: "#c6bfac" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Raw Silk", code: "0351", hex: "#e2decf" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Royal Ivory", code: "0331", hex: "#e6d9a3" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Mushroom", code: "0422", hex: "#cfc8b5" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Raw Silk", code: "0351", hex: "#ebe7d9" },
 
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Pale Cream", code: "0328", hex: "#dbc470" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Nickel Grey", code: "6126", hex: "#aeb3b0" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Suede", code: "0N01", hex: "#cfcbc7" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Pale Cream", code: "0328", hex: "#e0c975" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Nickel Grey", code: "6126", hex: "#b5bab7" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Suede", code: "0N01", hex: "#d8d4d0" },
 
       { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Golden Yellow", code: "0313", hex: "#f5ad00" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Light Grey", code: "6116", hex: "#859294" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Dawn", code: "0469", hex: "#d1bdb0" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Light Grey", code: "6116", hex: "#8b989a" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Dawn", code: "0469", hex: "#d9c6b9" },
 
       { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Lemon Yellow", code: "0317", hex: "#f7c700" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Smoke Grey (G)", code: "6134", hex: "#5f7a91" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Brandy (G)", code: "0N45", hex: "#a28d8a" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Smoke Grey (G)", code: "6134", hex: "#637e96" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Brandy (G)", code: "0N45", hex: "#a89390" },
 
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Mid Buff (G)", code: "0324", hex: "#be8629" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Ad. Grey", code: "0601", hex: "#4e585f" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Sandstone (G)", code: "0333", hex: "#9f8876" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Mid Buff (G)", code: "0324", hex: "#bf872a" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Ad. Grey", code: "0601", hex: "#505a61" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Sandstone (G)", code: "0333", hex: "#a38c7a" },
 
       { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Brilliant White", code: "0912", hex: "#ffffff" },
-      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Blazing White", code: "0W06", hex: "#f9fafb" },
+      { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Blazing White", code: "0W06", hex: "#fcfdfe" },
       { vibhag: "2. Yellows, Greys & Beiges (Gloss)", name: "Black", code: "0601", hex: "#141416" },
 
       // Page 3: Metallics & Browns
       { vibhag: "3. Metallics & Browns", name: "Gold", code: "Metallic", hex: "#cfa038" },
-      { vibhag: "3. Metallics & Browns", name: "Silver", code: "Metallic", hex: "#c4c9be" },
+      { vibhag: "3. Metallics & Browns", name: "Silver", code: "Metallic", hex: "#c8cdc2" },
       { vibhag: "3. Metallics & Browns", name: "Leaf Brown", code: "0415", hex: "#76442b" },
 
       { vibhag: "3. Metallics & Browns", name: "Golden Brown", code: "0413", hex: "#7e461a" },
@@ -429,153 +429,153 @@
       { vibhag: "3. Metallics & Browns", name: "White (Satin)", code: "0908", hex: "#ffffff" },
 
       // Page 4: Beiges, Greys, Yellows & Oranges (Satin)
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Morning Glory", code: "0765", hex: "#f0ecdc" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Natural Linen", code: "L132", hex: "#ede9d9" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Victorian Wisp", code: "0902", hex: "#f0ede2" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Morning Glory", code: "0765", hex: "#f7f3e6" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Natural Linen", code: "L132", hex: "#f5f1e4" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Victorian Wisp", code: "0902", hex: "#f7f5eb" },
 
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Sugared Nut", code: "L126", hex: "#eae3cf" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Cream", code: "0307", hex: "#ebe3ca" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Old Lace", code: "0952", hex: "#ede3cf" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Sugared Nut", code: "L126", hex: "#f2ecda" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Cream", code: "0307", hex: "#f2ebd4" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Old Lace", code: "0952", hex: "#f4ebd9" },
 
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Pebble White", code: "L136", hex: "#e2dacb" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Summer Sprinkle", code: "7923", hex: "#ede1a6" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Ceramic", code: "3027", hex: "#e8d3b9" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Pebble White", code: "L136", hex: "#eae3d5" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Summer Sprinkle", code: "7923", hex: "#f2e7b0" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Ceramic", code: "3027", hex: "#efdbc3" },
 
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Antique White", code: "0940", hex: "#d6cab9" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Lemon Burst", code: "7864", hex: "#f0dd73" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Milk Toffee", code: "7981", hex: "#edcea9" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Antique White", code: "0940", hex: "#dfd4c4" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Lemon Burst", code: "7864", hex: "#f5e37b" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Milk Toffee", code: "7981", hex: "#f2d5b3" },
 
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Silver Grey", code: "0615", hex: "#a2a8ab" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Tons Of Sun", code: "7895", hex: "#e8c35a" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Canyon Sun", code: "7982", hex: "#edb98a" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Silver Grey", code: "0615", hex: "#aab0b3" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Tons Of Sun", code: "7895", hex: "#edc961" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Canyon Sun", code: "7982", hex: "#f2c093" },
 
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Metallic Grey", code: "8296", hex: "#83888c" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Lemon Ole", code: "X105", hex: "#ebc81e" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "String Of Beads", code: "7998", hex: "#e8a372" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Metallic Grey", code: "8296", hex: "#898e92" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Lemon Ole", code: "X105", hex: "#f0cd24" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "String Of Beads", code: "7998", hex: "#edaa79" },
 
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Dusk Cloud", code: "8287", hex: "#505459" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Empire Yellow", code: "7918", hex: "#e3ad05" },
-      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Coral Radiance", code: "2174", hex: "#cf6140" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Dusk Cloud", code: "8287", hex: "#54585d" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Empire Yellow", code: "7918", hex: "#e8b209" },
+      { vibhag: "4. Beiges, Greys & Yellows (Satin)", name: "Coral Radiance", code: "2174", hex: "#d46544" },
 
       // Page 5: Reds, Blues & Greens (Satin)
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Twilight Hush", code: "0944", hex: "#e4d8cf" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Aquamint", code: "L114", hex: "#cfe0db" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Lemon Grass", code: "7747", hex: "#dce8c5" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Twilight Hush", code: "0944", hex: "#ede2da" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Aquamint", code: "L114", hex: "#d9e8e3" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Lemon Grass", code: "7747", hex: "#e5f0cf" },
 
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Rose Bud", code: "8035", hex: "#e3d1c9" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Oceans Whisper", code: "7436", hex: "#bcd6d4" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Misty Spring", code: "7658", hex: "#c0dcbc" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Rose Bud", code: "8035", hex: "#ecdcd4" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Oceans Whisper", code: "7436", hex: "#c7dfdd" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Misty Spring", code: "7658", hex: "#cbe5c7" },
 
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Palace Lights-N", code: "0N17", hex: "#dcc5bc" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Classic", code: "1263", hex: "#aac4cf" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Exotic Sea", code: "9298", hex: "#add6cc" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Palace Lights-N", code: "0N17", hex: "#e5d0c7" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Classic", code: "1263", hex: "#b4cdd8" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Exotic Sea", code: "9298", hex: "#b7dfd5" },
 
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Pink Dollop", code: "8098", hex: "#e8bfc5" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "New Day", code: "7410", hex: "#87bcd4" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Harvest Season", code: "7757", hex: "#b0cf72" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Pink Dollop", code: "8098", hex: "#f0c8ce" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "New Day", code: "7410", hex: "#8fc4dc" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Harvest Season", code: "7757", hex: "#b7d67a" },
 
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Pink Linen", code: "8056", hex: "#d99fa5" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Blue Curacao", code: "7360", hex: "#64acd1" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Lemonade", code: "7830", hex: "#dcdb42" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Pink Linen", code: "8056", hex: "#e0a7ad" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Blue Curacao", code: "7360", hex: "#6bb3d8" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Lemonade", code: "7830", hex: "#e2e149" },
 
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Petal Pink", code: "8119", hex: "#c47483" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Blue Glory", code: "7247", hex: "#627cb8" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Sporting Green", code: "7741", hex: "#82c223" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Petal Pink", code: "8119", hex: "#ca7a89" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Blue Glory", code: "7247", hex: "#6882be" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Sporting Green", code: "7741", hex: "#88c829" },
 
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Wild Berry", code: "8110", hex: "#a34958" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Lost Blue", code: "9182", hex: "#425b7a" },
-      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Jungle Trail", code: "7545", hex: "#209462" }
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Wild Berry", code: "8110", hex: "#a84e5d" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Lost Blue", code: "9182", hex: "#466080" },
+      { vibhag: "5. Reds, Blues & Greens (Satin)", name: "Jungle Trail", code: "7545", hex: "#249967" }
     ];
 
-    // 2. દીવાલ માટે (Exact 6 Pages Shown by You)
+    // 2. દીવાલ માટે (Exact Calibrated Light & Pure White Shades from Your Physical Card)
     const wallShades = [
       // Page 1: Whites, Browns & Greys
-      { vibhag: "1. Whites, Browns & Greys", name: "Radiant White", code: "0997", hex: "#f8f9f5" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Sugared Nut", code: "L126", hex: "#f1ede2" },
-      { vibhag: "1. Whites, Browns & Greys", name: "White Silk", code: "L171", hex: "#f2f4eb" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Radiant White", code: "0997", hex: "#ffffff" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Sugared Nut", code: "L126", hex: "#f7f4eb" },
+      { vibhag: "1. Whites, Browns & Greys", name: "White Silk", code: "L171", hex: "#f7f9f2" },
 
-      { vibhag: "1. Whites, Browns & Greys", name: "Sonnet", code: "L146", hex: "#f1f0eb" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Pure Ivory", code: "L124", hex: "#f0ebde" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Ice Crystal", code: "8444", hex: "#e9ece7" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Sonnet", code: "L146", hex: "#f5f4f0" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Pure Ivory", code: "L124", hex: "#f5f0e1" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Ice Crystal", code: "8444", hex: "#edf0eb" },
 
-      { vibhag: "1. Whites, Browns & Greys", name: "Morning Glory", code: "0765", hex: "#eee9de" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Pebble White", code: "L136", hex: "#e9e2d8" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Confetti", code: "8300", hex: "#e0e1dc" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Morning Glory", code: "0765", hex: "#f2ede2" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Pebble White", code: "L136", hex: "#ebe4da" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Confetti", code: "8300", hex: "#e3e4df" },
 
-      { vibhag: "1. Whites, Browns & Greys", name: "Whitener", code: "8476", hex: "#eae8e3" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Down Dew-N", code: "L190", hex: "#e5dbd1" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Whispering Smoke", code: "8308", hex: "#d0d2cf" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Whitener", code: "8476", hex: "#eceae5" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Down Dew-N", code: "L190", hex: "#e6dcd2" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Whispering Smoke", code: "8308", hex: "#d2d4d1" },
 
-      { vibhag: "1. Whites, Browns & Greys", name: "Beera Pearl-N", code: "0974", hex: "#e3dbd2" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Milk Chocolate", code: "8537", hex: "#cfb4a3" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Silver Grey", code: "0615", hex: "#b6bbbd" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Beera Pearl-N", code: "0974", hex: "#e4dcd3" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Milk Chocolate", code: "8537", hex: "#cfa995" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Silver Grey", code: "0615", hex: "#b4babd" },
 
-      { vibhag: "1. Whites, Browns & Greys", name: "Sands of Time", code: "4202", hex: "#c0b8ab" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Ethnic Brown", code: "8589", hex: "#9e5f3d" },
-      { vibhag: "1. Whites, Browns & Greys", name: "Smoke-N", code: "0616", hex: "#9ba2a7" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Sands of Time", code: "4202", hex: "#bfb7aa" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Ethnic Brown", code: "8589", hex: "#9c5634" },
+      { vibhag: "1. Whites, Browns & Greys", name: "Smoke-N", code: "0616", hex: "#969fa6" },
 
       // Page 2: Yellows, Oranges & Reds
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Candle Wick", code: "7907", hex: "#f1edcf" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Apricot Illusion", code: "7979", hex: "#f0e8d2" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Soft Breeze", code: "8116", hex: "#f4ecf0" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Candle Wick", code: "7907", hex: "#f6f2d8" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Apricot Illusion", code: "7979", hex: "#f5eedb" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Soft Breeze", code: "8116", hex: "#f9f2f5" },
 
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Eager Yellow", code: "7906", hex: "#f0e8bd" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Orange Frost", code: "7978", hex: "#f0e0c5" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Pale Blush", code: "8132", hex: "#f2e4e9" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Eager Yellow", code: "7906", hex: "#f5eec4" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Orange Frost", code: "7978", hex: "#f5e6cc" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Pale Blush", code: "8132", hex: "#f6e9ee" },
 
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Summer Harvest", code: "7921", hex: "#f0e0a4" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Marigold", code: "7986", hex: "#f0d7bb" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Garden Pink", code: "8090", hex: "#f1ced9" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Summer Harvest", code: "7921", hex: "#f3e4a8" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Marigold", code: "7986", hex: "#f4dcc1" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Garden Pink", code: "8090", hex: "#f4d3de" },
 
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Sunlit Sand", code: "7896", hex: "#eed686" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Fossil", code: "7985", hex: "#eec9a7" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Ballet Slippers", code: "8089", hex: "#eeb8c5" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Sunlit Sand", code: "7896", hex: "#f0d989" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Fossil", code: "7985", hex: "#f1cead" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Ballet Slippers", code: "8089", hex: "#f0bcc9" },
 
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Turn of Sun", code: "7895", hex: "#ecca66" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Sun-N-Sand", code: "7984", hex: "#ebb88c" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Fruit Pink", code: "9407", hex: "#dd8393" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Turn of Sun", code: "7895", hex: "#eecd69" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Sun-N-Sand", code: "7984", hex: "#edbc90" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Fruit Pink", code: "9407", hex: "#df8696" },
 
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Burnished Sun", code: "7919", hex: "#e6b93f" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Roasted Sesame", code: "7975", hex: "#e6a565" },
-      { vibhag: "2. Yellows, Oranges & Reds", name: "Rose Meadows", code: "9406", hex: "#cf6275" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Burnished Sun", code: "7919", hex: "#e8bb42" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Roasted Sesame", code: "7975", hex: "#e8a868" },
+      { vibhag: "2. Yellows, Oranges & Reds", name: "Rose Meadows", code: "9406", hex: "#d16578" },
 
       // Page 3: Violets, Blues & Greens
-      { vibhag: "3. Violets, Blues & Greens", name: "Delicate Violet", code: "7164", hex: "#e8e5e9" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Star Gaze", code: "7364", hex: "#e3e9eb" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Menthol", code: "L118", hex: "#e3ece3" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Delicate Violet", code: "7164", hex: "#eeebf0" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Star Gaze", code: "7364", hex: "#eaf0f2" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Menthol", code: "L118", hex: "#eaf2ea" },
 
-      { vibhag: "3. Violets, Blues & Greens", name: "Lavender Secret", code: "7163", hex: "#dfd8e2" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Caribbean Sky", code: "7419", hex: "#d5e7ea" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Spring Green", code: "9308", hex: "#d6e7d5" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Lavender Secret", code: "7163", hex: "#e5dfe8" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Caribbean Sky", code: "7419", hex: "#dcedf0" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Spring Green", code: "9308", hex: "#dceddb" },
 
-      { vibhag: "3. Violets, Blues & Greens", name: "Innocence", code: "7211", hex: "#d4cbd9" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Gulmarg Winters-N", code: "9656", hex: "#bddae2" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Lime Grove", code: "7729", hex: "#c5dda7" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Innocence", code: "7211", hex: "#d9d0de" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Gulmarg Winters-N", code: "9656", hex: "#c2dfe7" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Lime Grove", code: "7729", hex: "#cae2ac" },
 
-      { vibhag: "3. Violets, Blues & Greens", name: "Lilac Feather-N", code: "9630", hex: "#c1b3cd" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Soft Blue", code: "9210", hex: "#97c7d9" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Spring Surprise", code: "7728", hex: "#b1d287" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Lilac Feather-N", code: "9630", hex: "#c5b7d1" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Soft Blue", code: "9210", hex: "#9bcadd" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Spring Surprise", code: "7728", hex: "#b5d68b" },
 
-      { vibhag: "3. Violets, Blues & Greens", name: "Dash of Purple", code: "7160", hex: "#af98be" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Running Stream", code: "7408", hex: "#57afcc" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Lime Accent", code: "7727", hex: "#97c05d" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Dash of Purple", code: "7160", hex: "#b39cc2" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Running Stream", code: "7408", hex: "#5ab3d0" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Lime Accent", code: "7727", hex: "#9bc461" },
 
-      { vibhag: "3. Violets, Blues & Greens", name: "Heirloom", code: "7151", hex: "#9779aa" },
-      { vibhag: "3. Violets, Blues & Greens", name: "Hidden Springs", code: "7358", hex: "#247db1" },
-      { vibhag: "3. Violets, Blues & Greens", name: "French Bean-N", code: "9821", hex: "#72a736" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Heirloom", code: "7151", hex: "#9b7dae" },
+      { vibhag: "3. Violets, Blues & Greens", name: "Hidden Springs", code: "7358", hex: "#2681b6" },
+      { vibhag: "3. Violets, Blues & Greens", name: "French Bean-N", code: "9821", hex: "#75ab39" },
 
       // Page 4: Shwet Patra & Sabyasachi
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Namak", code: "SV01", hex: "#f1f1e9" },
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Muziris", code: "SV02", hex: "#ecf1ed" },
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Mogra", code: "SV03", hex: "#eef1ed" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Namak", code: "SV01", hex: "#f7f7f0" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Muziris", code: "SV02", hex: "#f2f7f3" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Mogra", code: "SV03", hex: "#f4f7f3" },
 
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Sondesh", code: "SV07", hex: "#eeede3" },
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Ellora", code: "SV10", hex: "#e8ece7" },
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Chikankari", code: "SV18", hex: "#e6edea" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Sondesh", code: "SV07", hex: "#f4f3ea" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Ellora", code: "SV10", hex: "#eef2ed" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Chikankari", code: "SV18", hex: "#ecf3f0" },
 
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Muga Silk", code: "SV19", hex: "#ebe8da" },
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Kapas", code: "SV24", hex: "#eae9e3" },
-      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Jharokha", code: "SV21", hex: "#f0e1dd" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Muga Silk", code: "SV19", hex: "#f1eee1" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Kapas", code: "SV24", hex: "#f0efe9" },
+      { vibhag: "4. Shwet Patra & Sabyasachi", name: "Jharokha", code: "SV21", hex: "#f6e8e4" },
 
       { vibhag: "4. Shwet Patra & Sabyasachi", name: "Apricot Cream", code: "SA16", hex: "#bf9395" },
       { vibhag: "4. Shwet Patra & Sabyasachi", name: "Crushed Nutmeg", code: "SA14", hex: "#6b524f" },
@@ -592,31 +592,31 @@
       // Page 5: Suggested Combinations
       { vibhag: "5. Suggested Combinations", name: "Alabaster Blush", code: "SA15", hex: "#cbbdba" },
       { vibhag: "5. Suggested Combinations", name: "Tea Rose", code: "SA17", hex: "#977675" },
-      { vibhag: "5. Suggested Combinations", name: "Day Lily", code: "8440", hex: "#e9f0ed" },
+      { vibhag: "5. Suggested Combinations", name: "Day Lily", code: "8440", hex: "#eff5f2" },
       { vibhag: "5. Suggested Combinations", name: "Dash of Purple", code: "7160", hex: "#a695bf" },
-      { vibhag: "5. Suggested Combinations", name: "Cream Tone", code: "7996", hex: "#e9ebe0" },
+      { vibhag: "5. Suggested Combinations", name: "Cream Tone", code: "7996", hex: "#eff1e7" },
       { vibhag: "5. Suggested Combinations", name: "Fawn Dream", code: "8557", hex: "#cf906c" },
-      { vibhag: "5. Suggested Combinations", name: "Mysore Ivory", code: "SA02", hex: "#e2e6e3" },
+      { vibhag: "5. Suggested Combinations", name: "Mysore Ivory", code: "SA02", hex: "#e8ece9" },
       { vibhag: "5. Suggested Combinations", name: "Morning Sky", code: "7249", hex: "#86aacb" },
-      { vibhag: "5. Suggested Combinations", name: "Sky Iris", code: "7220", hex: "#dcdde2" },
+      { vibhag: "5. Suggested Combinations", name: "Sky Iris", code: "7220", hex: "#e2e3e8" },
       { vibhag: "5. Suggested Combinations", name: "Steel", code: "6142", hex: "#aab4bb" },
-      { vibhag: "5. Suggested Combinations", name: "Cascade", code: "9270", hex: "#cfe0dd" },
+      { vibhag: "5. Suggested Combinations", name: "Cascade", code: "9270", hex: "#d5e6e3" },
       { vibhag: "5. Suggested Combinations", name: "Wild Mint", code: "7545", hex: "#86bcb0" },
-      { vibhag: "5. Suggested Combinations", name: "Parchment", code: "SA08", hex: "#d3ccc2" },
+      { vibhag: "5. Suggested Combinations", name: "Parchment", code: "SA08", hex: "#d9d2c8" },
       { vibhag: "5. Suggested Combinations", name: "Gauguin Blue", code: "7366", hex: "#74aacf" },
-      { vibhag: "5. Suggested Combinations", name: "Whispering Smoke", code: "8308", hex: "#c9ccc9" },
+      { vibhag: "5. Suggested Combinations", name: "Whispering Smoke", code: "8308", hex: "#cfd2cf" },
       { vibhag: "5. Suggested Combinations", name: "Wild Mushroom", code: "8472", hex: "#949390" },
-      { vibhag: "5. Suggested Combinations", name: "Sonchampa", code: "SA05", hex: "#d6cdb0" },
+      { vibhag: "5. Suggested Combinations", name: "Sonchampa", code: "SA05", hex: "#dcd3b6" },
       { vibhag: "5. Suggested Combinations", name: "Italian Olive", code: "7823", hex: "#c0c26e" },
-      { vibhag: "5. Suggested Combinations", name: "Whipped Cream", code: "7881", hex: "#f0ebd3" },
-      { vibhag: "5. Suggested Combinations", name: "Creme Anglaise", code: "7907", hex: "#e2d780" },
-      { vibhag: "5. Suggested Combinations", name: "Lavender Lace", code: "7156", hex: "#e0d9de" },
-      { vibhag: "5. Suggested Combinations", name: "Pale Rose", code: "5206", hex: "#e0a6aa" },
-      { vibhag: "5. Suggested Combinations", name: "Phantom Lake", code: "7372", hex: "#d3dbdd" },
+      { vibhag: "5. Suggested Combinations", name: "Whipped Cream", code: "7881", hex: "#f5f0da" },
+      { vibhag: "5. Suggested Combinations", name: "Creme Anglaise", code: "7907", hex: "#e5da84" },
+      { vibhag: "5. Suggested Combinations", name: "Lavender Lace", code: "7156", hex: "#e6dfe4" },
+      { vibhag: "5. Suggested Combinations", name: "Pale Rose", code: "5206", hex: "#e3a9ad" },
+      { vibhag: "5. Suggested Combinations", name: "Phantom Lake", code: "7372", hex: "#d9e1e3" },
       { vibhag: "5. Suggested Combinations", name: "Indian Turquoise", code: "SA34", hex: "#62a3ae" },
-      { vibhag: "5. Suggested Combinations", name: "Pine Nut", code: "3196", hex: "#d6cdbc" },
+      { vibhag: "5. Suggested Combinations", name: "Pine Nut", code: "3196", hex: "#dcd3c2" },
       { vibhag: "5. Suggested Combinations", name: "Almond Sand", code: "8512", hex: "#aa9974" },
-      { vibhag: "5. Suggested Combinations", name: "Forest Mist", code: "7667", hex: "#e2ebdd" },
+      { vibhag: "5. Suggested Combinations", name: "Forest Mist", code: "7667", hex: "#e8f0e3" },
       { vibhag: "5. Suggested Combinations", name: "Crisp Lettuce", code: "7685", hex: "#acd49c" },
 
       // Page 6: Royale Décor & Luxe
@@ -625,11 +625,11 @@
       { vibhag: "6. Royale Décor & Luxe", name: "Soft Sheen Finish", code: "Royale Luxury Emulsion", hex: "#7a4c58" },
       { vibhag: "6. Royale Décor & Luxe", name: "Matt Finish", code: "Royale Matt", hex: "#7d505b" },
       { vibhag: "6. Royale Décor & Luxe", name: "Neo Gold Finish", code: "Royale Décor", hex: "#dcab44" },
-      { vibhag: "6. Royale Décor & Luxe", name: "Neo Silver Finish", code: "Royale Décor", hex: "#edece3" },
-      { vibhag: "6. Royale Décor & Luxe", name: "Mineral", code: "Royale Play", hex: "#ccd1cf", texture: "mineral" },
-      { vibhag: "6. Royale Décor & Luxe", name: "Dune Halo", code: "M011", hex: "#c7d6da", texture: "dune" },
-      { vibhag: "6. Royale Décor & Luxe", name: "Stucco Marble", code: "9535A", hex: "#e5dcd0" },
-      { vibhag: "6. Royale Décor & Luxe", name: "Antico Classique", code: "M0299", hex: "#aeb4b6", texture: "antico" }
+      { vibhag: "6. Royale Décor & Luxe", name: "Neo Silver Finish", code: "Royale Décor", hex: "#f2f1e8" },
+      { vibhag: "6. Royale Décor & Luxe", name: "Mineral", code: "Royale Play", hex: "#d2d7d5", texture: "mineral" },
+      { vibhag: "6. Royale Décor & Luxe", name: "Dune Halo", code: "M011", hex: "#cddce0", texture: "dune" },
+      { vibhag: "6. Royale Décor & Luxe", name: "Stucco Marble", code: "9535A", hex: "#ebe2d6" },
+      { vibhag: "6. Royale Décor & Luxe", name: "Antico Classique", code: "M0299", hex: "#b4babc", texture: "antico" }
     ];
 
     let activeList = [];
